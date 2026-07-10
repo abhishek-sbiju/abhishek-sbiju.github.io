@@ -128,8 +128,8 @@ export default function Hero() {
               <p className="mt-1.5 flex items-center gap-2 font-mono text-xs text-ink sm:text-[13px]">
                 {fact.live && (
                   <span className="relative flex size-2" aria-hidden="true">
-                    <span className="absolute inline-flex size-full animate-ping bg-gold opacity-50 motion-reduce:animate-none" />
-                    <span className="relative inline-flex size-2 bg-gold" />
+                    <span className="absolute inline-flex size-full animate-ping bg-pass opacity-50 motion-reduce:animate-none" />
+                    <span className="relative inline-flex size-2 bg-pass" />
                   </span>
                 )}
                 {fact.value}

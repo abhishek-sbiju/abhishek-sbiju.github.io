@@ -55,7 +55,7 @@ export default function SpecRunner() {
           <span className="ml-2 font-mono text-xs text-muted">portfolio.spec.ts</span>
           <span
             className={`ml-auto font-mono text-[10px] tracking-[0.25em] uppercase ${
-              done ? 'text-accent' : 'text-muted'
+              done ? 'text-pass' : 'text-muted'
             }`}
           >
             {done ? 'Passed' : 'Running'}
@@ -76,7 +76,7 @@ export default function SpecRunner() {
               >
                 <span className="w-4 shrink-0 text-center">
                   {line.assert ? (
-                    <span className={passed ? 'text-accent' : 'text-muted'}>
+                    <span className={passed ? 'text-pass' : 'text-muted'}>
                       {passed ? '✓' : '·'}
                     </span>
                   ) : (
@@ -100,7 +100,7 @@ export default function SpecRunner() {
               done ? 'opacity-100' : 'opacity-0'
             }`}
           >
-            <span className="font-semibold text-accent">✓ 4 passed</span>
+            <span className="font-semibold text-pass">✓ 4 passed</span>
             <span className="text-muted">(1.2s)</span>
             <span className="caret ml-auto inline-block h-4 w-2 bg-gold" />
           </div>

@@ -29,7 +29,7 @@ export default function Education() {
             <ul className="mt-4 space-y-3">
               {achievements.map((item) => (
                 <li key={item} className="flex gap-3 text-sm leading-relaxed text-muted">
-                  <span className="mt-0.5 text-accent" aria-hidden="true">
+                  <span className="mt-0.5 text-pass" aria-hidden="true">
                     ✓
                   </span>
                   {item}

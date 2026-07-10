@@ -45,7 +45,7 @@ export default function About() {
             <ul className="mt-5 space-y-4">
               {currently.map((item) => (
                 <li key={item} className="flex gap-3 text-sm leading-relaxed text-ink">
-                  <span className="mt-0.5 text-accent" aria-hidden="true">
+                  <span className="mt-0.5 text-pass" aria-hidden="true">
                     ✓
                   </span>
                   {item}

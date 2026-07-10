@@ -55,7 +55,7 @@ Then set **Settings → Pages → Source: Deploy from a branch → gh-pages**.
 
 ## Design notes
 
-- **Palette:** Versor paper/ink/gold (light) and warm ink/gold (dark); gold `#d4af37` is the only accent, hairlines carry the structure, zero border radius. Tokens live in `src/index.css` as CSS variables mapped into Tailwind via `@theme inline`.
-- **Dark mode:** `.dark` class on `<html>`, set pre-paint by an inline script in `index.html` (respects `localStorage` then system preference) — no flash of the wrong theme.
+- **Palette:** Versor paper/ink/gold, single light theme by design; gold `#d4af37` is the brand voice, green marks verification (test ✓, live dots), hairlines carry the structure, zero border radius. Tokens live in `src/index.css` as CSS variables mapped into Tailwind via `@theme inline`.
+- **Live data:** the Codeforces rating in the hero and spec runner comes from the Codeforces API at load (`src/hooks/useCodeforces.ts`), with a static fallback.
 - **Motion:** scroll reveals and the hero spec-runner respect `prefers-reduced-motion` (static, all-passed state).
 - **Accessibility:** semantic landmarks, skip link, visible focus rings, aria labels on icon buttons, decorative code panel hidden from screen readers with an `sr-only` summary.

@@ -17,7 +17,7 @@ export default function Experience() {
             <article className="grid gap-6 px-5 py-10 sm:px-10 lg:grid-cols-[220px_1fr] lg:gap-10">
               <div>
                 <p className="font-mono text-xs text-muted">{entry.period}</p>
-                <p className="mt-2 font-mono text-[10px] tracking-[0.25em] text-accent uppercase">
+                <p className="mt-2 font-mono text-[10px] tracking-[0.25em] text-pass uppercase">
                   ✓ verified
                 </p>
               </div>

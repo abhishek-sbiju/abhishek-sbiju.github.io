@@ -34,7 +34,7 @@ export default function ProjectCard({ project, index }: { project: Project; inde
       <p className="mt-4 flex-1 text-sm leading-relaxed text-muted">{project.description}</p>
 
       {project.highlight && (
-        <p className="mt-5 font-mono text-xs text-accent">✓ {project.highlight}</p>
+        <p className="mt-5 font-mono text-xs text-pass">✓ {project.highlight}</p>
       )}
 
       <div className="mt-5 flex items-center justify-between gap-4 border-t border-line pt-4">

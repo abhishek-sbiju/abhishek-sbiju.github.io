@@ -2,12 +2,10 @@
 @import '@fontsource-variable/spline-sans-mono';
 @import 'tailwindcss';
 
-@custom-variant dark (&:where(.dark, .dark *));
-
 /*
- * Versor "Exposed Grid" token system.
- * Light: paper / ink / gold. Dark: warm ink / paper / gold.
- * Hairlines are structure; gold is the only voice. Zero border radius.
+ * Versor "Exposed Grid" token system: paper / ink / gold, single light
+ * theme. Hairlines are structure; gold is the voice; green means passed.
+ * Zero border radius.
  */
 :root {
   --c-bg: #faf9f5;
@@ -19,24 +17,9 @@
   --c-accent: #8f7317;
   --c-gold: #d4af37;
   --c-accent-soft: rgba(212, 175, 55, 0.12);
-  --c-pass: #8f7317;
-  --watermark: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><text x='70' y='74' font-family='monospace' font-size='13' letter-spacing='3' fill='rgba(27,26,22,0.07)' text-anchor='middle' transform='rotate(-45 70 70)'>abhishek</text></svg>");
+  --c-pass: #0e8a61;
+  --watermark: url("data:image/svg+xml,%3Csvg width='44' height='44' xmlns='http://www.w3.org/2000/svg'%3E%3Cg transform='rotate(-45 22 22)'%3E%3Ctext x='22' y='24' font-family='sans-serif' font-size='7' font-weight='700' fill='%23755607' opacity='0.3' text-anchor='middle' letter-spacing='0.2'%3Eabhishek%3C/text%3E%3C/g%3E%3C/svg%3E");
   color-scheme: light;
-}
-
-.dark {
-  --c-bg: #14130f;
-  --c-surface: #1b1913;
-  --c-surface-2: #221f17;
-  --c-ink: #f0ede3;
-  --c-muted: #a49d89;
-  --c-line: #2b2820;
-  --c-accent: #d4af37;
-  --c-gold: #d4af37;
-  --c-accent-soft: rgba(212, 175, 55, 0.12);
-  --c-pass: #d4af37;
-  --watermark: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><text x='70' y='74' font-family='monospace' font-size='13' letter-spacing='3' fill='rgba(240,237,227,0.06)' text-anchor='middle' transform='rotate(-45 70 70)'>abhishek</text></svg>");
-  color-scheme: dark;
 }
 
 @theme inline {
@@ -86,9 +69,37 @@ body {
   outline-offset: 3px;
 }
 
-/* 45° tiled name watermark — fills the rail strip and empty grid cells. */
+/* 45° tiled name watermark — the brand's security print. It fills the
+   rail strip and empty grid cells, and drifts along its own 45° grain. */
 .watermark {
   background-image: var(--watermark);
+  background-size: 44px 44px;
+  animation: wm-drift 12s linear infinite;
+}
+
+@keyframes wm-drift {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 44px 44px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .watermark {
+    animation: none;
+  }
+}
+
+/* The rail: gold deepens toward the floor, like a poured pour. */
+.rail-gold {
+  background: linear-gradient(
+    to bottom,
+    color-mix(in srgb, var(--c-gold) 9%, var(--c-bg)),
+    color-mix(in srgb, var(--c-gold) 26%, var(--c-bg))
+  );
+  border-right: 1px solid color-mix(in srgb, var(--c-gold) 30%, var(--c-line));
 }
 
 /* Gold-foil fill for the one headline that earns it. */

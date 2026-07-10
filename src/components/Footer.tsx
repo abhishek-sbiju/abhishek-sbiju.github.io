@@ -5,7 +5,7 @@ export default function Footer() {
     <footer>
       <div className="flex flex-col items-start justify-between gap-3 px-5 py-8 font-mono text-xs text-muted sm:flex-row sm:items-center sm:px-10">
         <p>
-          <span className="text-accent">✓ all sections passed</span> · built with React, Vite &
+          <span className="text-pass">✓ all sections passed</span> · built with React, Vite &
           Tailwind
         </p>
         <p>

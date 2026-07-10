@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import { motion, useScroll } from 'motion/react'
 import { Download, Menu, X } from 'lucide-react'
-import ThemeToggle from './ThemeToggle'
 import { resumeUrl } from '../data/profile'
 
 const links = [
@@ -37,18 +36,23 @@ export default function Nav() {
 
   return (
     <>
-      {/* Fixed left rail: vertical wordmark over the tiled name watermark. */}
-      <div className="fixed inset-y-0 left-0 z-40 hidden w-14 flex-col items-center border-r border-line bg-bg lg:flex">
+      {/* Fixed left rail, Versor-style: logo box, wordmark centred in the
+          middle space, drifting security-print strip at the base. */}
+      <div className="rail-gold fixed inset-y-0 left-0 z-40 hidden w-14 flex-col lg:flex">
         <a
           href="#main"
-          className="shrink-0 py-6 font-mono text-[11px] font-semibold tracking-[0.35em] text-ink uppercase [writing-mode:vertical-rl]"
+          className="flex h-12 shrink-0 items-center justify-center border-b border-line font-mono text-sm font-bold text-ink"
+          aria-label="Abhishek Smitha Biju — home"
+        >
+          ab<span className="text-accent">.</span>
+        </a>
+        <a
+          href="#main"
+          className="flex min-h-0 flex-1 rotate-180 items-center justify-center font-display text-[0.95rem] font-extrabold tracking-[0.3em] text-ink uppercase [writing-mode:vertical-rl]"
         >
           Abhishek Smitha Biju<span className="text-accent">.</span>
         </a>
-        <div aria-hidden="true" className="watermark w-full flex-1 border-y border-line" />
-        <div className="shrink-0 py-4">
-          <ThemeToggle />
-        </div>
+        <div aria-hidden="true" className="watermark h-36 w-full shrink-0 border-t border-line" />
       </div>
 
       {/* Hairline top bar with a gold reading-progress hairline. */}
@@ -88,9 +92,6 @@ export default function Nav() {
           </ul>
 
           <div className="flex items-stretch">
-            <div className="flex items-center border-l border-line px-3 lg:hidden">
-              <ThemeToggle />
-            </div>
             <a
               href={resumeUrl}
               download
