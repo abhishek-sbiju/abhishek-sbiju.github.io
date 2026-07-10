@@ -1,0 +1,114 @@
+@import '@fontsource-variable/bricolage-grotesque';
+@import '@fontsource-variable/spline-sans-mono';
+@import 'tailwindcss';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/*
+ * Versor "Exposed Grid" token system.
+ * Light: paper / ink / gold. Dark: warm ink / paper / gold.
+ * Hairlines are structure; gold is the only voice. Zero border radius.
+ */
+:root {
+  --c-bg: #faf9f5;
+  --c-surface: #ffffff;
+  --c-surface-2: #f1efe7;
+  --c-ink: #1b1a16;
+  --c-muted: #6b675a;
+  --c-line: #e3e0d5;
+  --c-accent: #8f7317;
+  --c-gold: #d4af37;
+  --c-accent-soft: rgba(212, 175, 55, 0.12);
+  --c-pass: #8f7317;
+  --watermark: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><text x='70' y='74' font-family='monospace' font-size='13' letter-spacing='3' fill='rgba(27,26,22,0.07)' text-anchor='middle' transform='rotate(-45 70 70)'>abhishek</text></svg>");
+  color-scheme: light;
+}
+
+.dark {
+  --c-bg: #14130f;
+  --c-surface: #1b1913;
+  --c-surface-2: #221f17;
+  --c-ink: #f0ede3;
+  --c-muted: #a49d89;
+  --c-line: #2b2820;
+  --c-accent: #d4af37;
+  --c-gold: #d4af37;
+  --c-accent-soft: rgba(212, 175, 55, 0.12);
+  --c-pass: #d4af37;
+  --watermark: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><text x='70' y='74' font-family='monospace' font-size='13' letter-spacing='3' fill='rgba(240,237,227,0.06)' text-anchor='middle' transform='rotate(-45 70 70)'>abhishek</text></svg>");
+  color-scheme: dark;
+}
+
+@theme inline {
+  --font-display: 'Bricolage Grotesque Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-sans: 'Bricolage Grotesque Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'Spline Sans Mono Variable', ui-monospace, 'SFMono-Regular', monospace;
+
+  --color-bg: var(--c-bg);
+  --color-surface: var(--c-surface);
+  --color-surface-2: var(--c-surface-2);
+  --color-ink: var(--c-ink);
+  --color-muted: var(--c-muted);
+  --color-line: var(--c-line);
+  --color-accent: var(--c-accent);
+  --color-gold: var(--c-gold);
+  --color-accent-soft: var(--c-accent-soft);
+  --color-pass: var(--c-pass);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  background-color: var(--c-bg);
+  color: var(--c-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+::selection {
+  background: var(--c-gold);
+  color: #1b1a16;
+}
+
+:focus-visible {
+  outline: 2px solid var(--c-accent);
+  outline-offset: 3px;
+}
+
+/* 45° tiled name watermark — fills the rail strip and empty grid cells. */
+.watermark {
+  background-image: var(--watermark);
+}
+
+/* Blinking caret for the spec-runner panel. */
+@keyframes caret-blink {
+  0%,
+  45% {
+    opacity: 1;
+  }
+  50%,
+  95% {
+    opacity: 0;
+  }
+}
+
+.caret {
+  animation: caret-blink 1.1s steps(1) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .caret {
+    animation: none;
+  }
+}
