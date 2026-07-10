@@ -5,7 +5,7 @@ import { achievements, certifications, education } from '../data/education'
 
 export default function Education() {
   return (
-    <Section id="education" eyebrow="Education" title="Where I'm studying.">
+    <Section id="education" eyebrow="Education" title="Where I'm studying." meta="2024 — 2028">
       <div className="grid gap-px bg-line lg:grid-cols-2">
         <Reveal className="bg-bg">
           <div className="flex h-full flex-col px-5 py-10 sm:px-10">

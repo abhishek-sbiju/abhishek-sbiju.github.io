@@ -12,9 +12,13 @@ function GithubIcon({ className }: { className?: string }) {
 
 export default function ProjectCard({ project, index }: { project: Project; index: number }) {
   return (
-    <article className="group flex h-full flex-col bg-bg px-5 py-8 transition-colors duration-300 hover:bg-surface-2 sm:px-8">
+    <article className="group relative flex h-full flex-col overflow-hidden bg-bg px-5 py-8 transition-colors duration-300 hover:bg-surface-2 sm:px-8">
+      <span
+        aria-hidden="true"
+        className="absolute inset-y-0 left-0 w-1 origin-top scale-y-0 bg-gold transition-transform duration-300 group-hover:scale-y-100 motion-reduce:transition-none"
+      />
       <div className="flex items-start justify-between gap-4">
-        <p className="font-mono text-[10px] tracking-[0.25em] text-muted uppercase">
+        <p className="font-mono text-[10px] tracking-[0.25em] text-muted uppercase transition-colors duration-300 group-hover:text-accent">
           {String(index + 1).padStart(2, '0')}
         </p>
         {project.badge && (

@@ -9,12 +9,12 @@ const currently = [
 
 export default function About() {
   return (
-    <Section id="about" eyebrow="About" title="Builder first, student second.">
+    <Section id="about" eyebrow="About" title="Builder first, student second." meta="Chennai & Goa · IST">
       <div className="grid gap-px bg-line lg:grid-cols-[7fr_5fr]">
         <Reveal className="bg-bg">
           <div className="space-y-5 px-5 py-10 text-base leading-relaxed text-muted sm:px-10 sm:text-lg">
             <p>
-              I'm Abhishek — a second-year computer science student at BITS Pilani, Goa, who would
+              I'm Abhishek — a third-year computer science student at BITS Pilani, Goa, who would
               rather ship something real than polish a toy project. In my first two years I founded{' '}
               <a
                 href="https://versor.in"

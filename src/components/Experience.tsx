@@ -5,7 +5,12 @@ import { experience } from '../data/experience'
 
 export default function Experience() {
   return (
-    <Section id="experience" eyebrow="Experience" title="The run log.">
+    <Section
+      id="experience"
+      eyebrow="Experience"
+      title="The run log."
+      meta={`${experience.length} roles · 2026`}
+    >
       <div className="grid gap-px bg-line">
         {experience.map((entry, i) => (
           <Reveal key={entry.company} delay={i * 0.08} className="bg-bg">

@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useReducedMotion } from 'motion/react'
+import { useCodeforces } from '../../hooks/useCodeforces'
 
 interface SpecLine {
   text: string
@@ -8,21 +9,32 @@ interface SpecLine {
   comment?: string
 }
 
-const lines: SpecLine[] = [
-  { text: "test('abhishek smitha biju', () => {", indent: 0 },
-  { text: "expect(role).toBe('engineer & founder')", indent: 1, assert: true },
-  { text: "expect(fourkites).toMigrate('virtuoso → playwright')", indent: 1, assert: true },
-  { text: 'expect(versor.customers).toBeGreaterThan(4)', indent: 1, assert: true },
-  { text: 'expect(codeforces.rating).toBe(1505)', indent: 1, assert: true, comment: '// specialist' },
-  { text: '})', indent: 0 },
-]
+function buildLines(rating: number, rank: string): SpecLine[] {
+  return [
+    { text: "test('abhishek smitha biju', () => {", indent: 0 },
+    { text: "expect(role).toBe('engineer & founder')", indent: 1, assert: true },
+    { text: "expect(fourkites).toMigrate('virtuoso → playwright')", indent: 1, assert: true },
+    { text: 'expect(versor.customers).toBeGreaterThan(4)', indent: 1, assert: true },
+    {
+      text: `expect(codeforces.rating).toBe(${rating})`,
+      indent: 1,
+      assert: true,
+      comment: `// ${rank.toLowerCase()}`,
+    },
+    { text: '})', indent: 0 },
+  ]
+}
+
+const LINE_COUNT = 6
 
 // One tick reveals a line; assert lines flip from "running" to "passed"
 // one tick after they appear. The summary lands on the final tick.
-const TOTAL_TICKS = lines.length + 2
+const TOTAL_TICKS = LINE_COUNT + 2
 
 export default function SpecRunner() {
   const reduceMotion = useReducedMotion()
+  const cf = useCodeforces()
+  const lines = buildLines(cf.rating, cf.rank)
   const [tick, setTick] = useState(() => (reduceMotion ? TOTAL_TICKS : 0))
 
   useEffect(() => {
@@ -97,7 +109,7 @@ export default function SpecRunner() {
 
       <p className="sr-only">
         All checks pass: engineer and founder, Playwright test migration at FourKites, five Versor
-        customers, Codeforces rating 1505.
+        customers, Codeforces rating {cf.rating}.
       </p>
     </div>
   )

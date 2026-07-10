@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { motion, useScroll } from 'motion/react'
 import { Download, Menu, X } from 'lucide-react'
 import ThemeToggle from './ThemeToggle'
 import { resumeUrl } from '../data/profile'
@@ -14,6 +15,25 @@ const links = [
 
 export default function Nav() {
   const [open, setOpen] = useState(false)
+  const [active, setActive] = useState('')
+  const { scrollYProgress } = useScroll()
+
+  // Scrollspy: light up the section currently in the reading band.
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) setActive(`#${entry.target.id}`)
+        }
+      },
+      { rootMargin: '-25% 0px -65% 0px' },
+    )
+    for (const link of links) {
+      const el = document.querySelector(link.href)
+      if (el) observer.observe(el)
+    }
+    return () => observer.disconnect()
+  }, [])
 
   return (
     <>
@@ -31,7 +51,7 @@ export default function Nav() {
         </div>
       </div>
 
-      {/* Hairline top bar. */}
+      {/* Hairline top bar with a gold reading-progress hairline. */}
       <header className="fixed top-0 right-0 left-0 z-30 border-b border-line bg-bg/90 backdrop-blur-sm lg:left-14">
         <nav aria-label="Primary" className="flex h-12 items-stretch justify-between">
           <a
@@ -43,16 +63,28 @@ export default function Nav() {
           </a>
 
           <ul className="hidden items-stretch md:flex">
-            {links.map((link) => (
-              <li key={link.href} className="flex">
-                <a
-                  href={link.href}
-                  className="flex items-center px-4 font-mono text-[11px] tracking-[0.2em] text-muted uppercase transition-colors hover:bg-accent-soft hover:text-ink"
-                >
-                  {link.label}
-                </a>
-              </li>
-            ))}
+            {links.map((link) => {
+              const isActive = active === link.href
+              return (
+                <li key={link.href} className="flex">
+                  <a
+                    href={link.href}
+                    aria-current={isActive ? 'true' : undefined}
+                    className={`flex items-center gap-2 px-4 font-mono text-[11px] tracking-[0.2em] uppercase transition-colors hover:bg-accent-soft hover:text-ink ${
+                      isActive ? 'text-ink' : 'text-muted'
+                    }`}
+                  >
+                    <span
+                      aria-hidden="true"
+                      className={`size-1.5 bg-gold transition-all duration-300 ${
+                        isActive ? 'scale-100 opacity-100' : 'scale-0 opacity-0'
+                      }`}
+                    />
+                    {link.label}
+                  </a>
+                </li>
+              )
+            })}
           </ul>
 
           <div className="flex items-stretch">
@@ -78,6 +110,12 @@ export default function Nav() {
             </button>
           </div>
         </nav>
+
+        <motion.div
+          aria-hidden="true"
+          style={{ scaleX: scrollYProgress }}
+          className="absolute inset-x-0 bottom-[-1px] h-px origin-left bg-gold"
+        />
 
         {open && (
           <div className="border-t border-line bg-bg md:hidden">

@@ -6,8 +6,8 @@ export const education = {
 }
 
 export const achievements: string[] = [
-  'Codeforces Specialist (rating 1505) — regular practice in C++, strongest on data structures and dynamic programming.',
-  'Shipped 5+ real client products, idea to live deployment, as a second-year student.',
+  'Codeforces Specialist — regular practice in C++, strongest on data structures and dynamic programming (live rating up top).',
+  'Shipped 5+ real client products, idea to live deployment, by the end of second year.',
   'Participated in the Integral Cup mathematics competition.',
 ]
 

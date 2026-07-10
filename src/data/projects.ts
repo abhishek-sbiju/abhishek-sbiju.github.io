@@ -41,7 +41,7 @@ export const projects: Project[] = [
     tagline: 'Five+ client websites, idea to live deployment',
     description:
       'A series of production websites and QR menu systems for restaurants and cafés — each with its own visual identity, a Google-Sheet-editable menu, gallery, reservations, and a secure owner admin. The repeatable architecture behind these builds became Versor.',
-    highlight: 'Shipped as a second-year student',
+    highlight: 'Shipped before third year',
     tags: ['Next.js', 'React', 'Tailwind CSS', 'Firebase'],
     badge: 'Client work',
   },

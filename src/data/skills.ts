@@ -14,6 +14,6 @@ export const skillGroups: SkillGroup[] = [
   { label: 'Tools', items: ['Git', 'GitHub', 'Jira', 'VS Code'] },
   {
     label: 'Competitive Programming',
-    items: ['Codeforces Specialist (1505)', 'Data structures', 'Dynamic programming'],
+    items: ['Codeforces Specialist', 'Data structures', 'Dynamic programming'],
   },
 ]
