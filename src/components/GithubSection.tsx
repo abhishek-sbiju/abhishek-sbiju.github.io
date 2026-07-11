@@ -3,15 +3,15 @@ import Section from './Section'
 import Reveal from './Reveal'
 import { profile } from '../data/profile'
 import { useGithub } from '../hooks/useGithub'
+import { useStreak } from '../hooks/useStreak'
 
 const USERNAME = 'abhishek-sbiju'
 
-// Public widget services, themed to the paper/ink/gold system.
-// A daily cache-buster keeps the charts current — both services cache
-// aggressively, and the calendar includes private-contribution counts.
+// The calendar comes from ghchart, themed to the palette; a daily
+// cache-buster keeps it current, and it includes private-contribution
+// counts. Stats, languages, and streaks render natively from live data.
 const TODAY = new Date().toISOString().slice(0, 10)
 const CHART = `https://ghchart.rshah.org/8f7317/${USERNAME}?d=${TODAY}`
-const STREAK = `https://streak-stats.demolab.com?user=${USERNAME}&hide_border=true&background=FAF9F5&ring=d4af37&fire=d4af37&stroke=e3e0d5&currStreakLabel=8f7317&sideLabels=1b1a16&currStreakNum=1b1a16&sideNums=1b1a16&dates=6b675a&d=${TODAY}`
 
 function hideOnError(event: React.SyntheticEvent<HTMLImageElement>) {
   event.currentTarget.style.display = 'none'
@@ -19,6 +19,7 @@ function hideOnError(event: React.SyntheticEvent<HTMLImageElement>) {
 
 export default function GithubSection() {
   const gh = useGithub(USERNAME)
+  const streak = useStreak(USERNAME)
 
   const stats = [
     { label: 'Public repos', value: gh.live ? String(gh.publicRepos) : '—' },
@@ -132,21 +133,40 @@ export default function GithubSection() {
             </div>
           </Reveal>
 
-          {/* Contribution streak — themed widget */}
+          {/* Contribution streak — computed live from the public graph */}
           <Reveal delay={0.16} className="h-full bg-bg">
             <div className="flex h-full flex-col px-5 py-7 sm:px-8">
               <p className="font-mono text-[10px] tracking-[0.3em] text-accent uppercase">
                 Contribution streak
               </p>
-              <div className="mt-4">
-                <img
-                  src={STREAK}
-                  alt={`GitHub contribution streak for ${USERNAME}`}
-                  loading="lazy"
-                  onError={hideOnError}
-                  className="w-full"
-                />
-              </div>
+              <ul className="mt-4">
+                {[
+                  {
+                    label: 'Contributions · last year',
+                    value: streak.live ? String(streak.total) : '—',
+                  },
+                  {
+                    label: 'Current streak',
+                    value: streak.live
+                      ? `${streak.current} ${streak.current === 1 ? 'day' : 'days'}`
+                      : '—',
+                  },
+                  {
+                    label: 'Longest streak',
+                    value: streak.live
+                      ? `${streak.longest} ${streak.longest === 1 ? 'day' : 'days'}`
+                      : '—',
+                  },
+                ].map((row) => (
+                  <li
+                    key={row.label}
+                    className="flex items-baseline justify-between gap-3 border-b border-line py-2.5 last:border-b-0"
+                  >
+                    <span className="text-sm text-muted">{row.label}</span>
+                    <span className="font-mono text-sm font-semibold text-ink">{row.value}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
           </Reveal>
         </div>
