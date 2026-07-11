@@ -1,15 +1,15 @@
 import { useEffect, useState } from 'react'
 
-export interface LanguageShare {
+export interface LanguageCount {
   name: string
-  pct: number
+  count: number
 }
 
 export interface GithubInfo {
   followers: number
   publicRepos: number
   since: string | null
-  languages: LanguageShare[]
+  languageCounts: LanguageCount[]
   live: boolean
 }
 
@@ -17,7 +17,7 @@ const fallback: GithubInfo = {
   followers: 0,
   publicRepos: 0,
   since: null,
-  languages: [],
+  languageCounts: [],
   live: false,
 }
 
@@ -46,17 +46,13 @@ function fetchInfo(username: string): Promise<GithubInfo> {
           }
         }
       }
-      const total = [...tally.values()].reduce((a, b) => a + b, 0)
-      const languages = [...tally.entries()]
-        .sort((a, b) => b[1] - a[1])
-        .slice(0, 5)
-        .map(([name, count]) => ({ name, pct: Math.round((count / total) * 100) }))
+      const languageCounts = [...tally.entries()].map(([name, count]) => ({ name, count }))
 
       cached = {
         followers: user.followers ?? 0,
         publicRepos: user.public_repos,
         since: user.created_at ? new Date(user.created_at).getFullYear().toString() : null,
-        languages,
+        languageCounts,
         live: true,
       }
       return cached

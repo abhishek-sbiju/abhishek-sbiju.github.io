@@ -22,11 +22,11 @@ export const profile = {
     fallbackRating: 1512,
     fallbackRank: 'Specialist',
   },
-  // No public API exposes private-repo counts, so this one is curated —
-  // bump it when the number changes (last counted Jul 2026).
+  // No public API exposes private-repo data, so these are curated —
+  // update them when the numbers change (last counted Jul 2026).
   github: {
     privateRepos: 17,
-    privateLanguageNote: 'The 17 private builds are TypeScript-first.',
+    privateLanguages: { TypeScript: 16, JavaScript: 1 } as Record<string, number>,
   },
 }
 

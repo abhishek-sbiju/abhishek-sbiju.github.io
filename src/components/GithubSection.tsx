@@ -21,6 +21,20 @@ export default function GithubSection() {
   const gh = useGithub(USERNAME)
   const streak = useStreak(USERNAME)
 
+  // Language split across ALL repos: live public counts merged with the
+  // curated private-repo mix (no API exposes private languages).
+  const langTally = new Map<string, number>(
+    Object.entries(profile.github.privateLanguages),
+  )
+  for (const lang of gh.languageCounts) {
+    langTally.set(lang.name, (langTally.get(lang.name) ?? 0) + lang.count)
+  }
+  const langTotal = [...langTally.values()].reduce((a, b) => a + b, 0)
+  const languages = [...langTally.entries()]
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, 5)
+    .map(([name, count]) => ({ name, pct: Math.round((count / langTotal) * 100) }))
+
   const stats = [
     { label: 'Public repos', value: gh.live ? String(gh.publicRepos) : '—' },
     { label: 'Private repos', value: String(profile.github.privateRepos), locked: true },
@@ -108,9 +122,9 @@ export default function GithubSection() {
               <p className="font-mono text-[10px] tracking-[0.3em] text-accent uppercase">
                 Most used languages
               </p>
-              {gh.languages.length > 0 ? (
+              {languages.length > 0 ? (
                 <ul className="mt-4 space-y-3.5">
-                  {gh.languages.map((lang) => (
+                  {languages.map((lang) => (
                     <li key={lang.name}>
                       <div className="flex items-baseline justify-between gap-3">
                         <span className="text-sm text-ink">{lang.name}</span>
@@ -128,7 +142,8 @@ export default function GithubSection() {
                 </p>
               )}
               <p className="mt-5 border-t border-line pt-3 font-mono text-[10px] leading-relaxed tracking-[0.15em] text-muted uppercase">
-                Split from public repos · {profile.github.privateLanguageNote}
+                Across all {gh.live ? gh.publicRepos + profile.github.privateRepos : 22} repos,
+                public and private
               </p>
             </div>
           </Reveal>
