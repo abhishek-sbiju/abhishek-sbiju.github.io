@@ -17,10 +17,8 @@ const fallback: CodeforcesInfo = {
 let cached: CodeforcesInfo | null = null
 let pending: Promise<CodeforcesInfo> | null = null
 
-function fetchInfo(): Promise<CodeforcesInfo> {
-  pending ??= fetch(
-    `https://codeforces.com/api/user.info?handles=${profile.codeforces.handle}`,
-  )
+function requestOnce(): Promise<CodeforcesInfo> {
+  return fetch(`https://codeforces.com/api/user.info?handles=${profile.codeforces.handle}`)
     .then((res) => res.json())
     .then((data) => {
       const user = data?.result?.[0]
@@ -33,9 +31,19 @@ function fetchInfo(): Promise<CodeforcesInfo> {
         }
         return cached
       }
-      return fallback
+      throw new Error('bad response')
     })
-    .catch(() => fallback)
+}
+
+// The Codeforces API is occasionally slow or briefly unavailable, so a
+// failed first attempt gets one retry before settling on the fallback.
+function fetchInfo(): Promise<CodeforcesInfo> {
+  pending ??= requestOnce().catch(
+    () =>
+      new Promise<CodeforcesInfo>((resolve) => {
+        setTimeout(() => requestOnce().then(resolve).catch(() => resolve(fallback)), 2000)
+      }),
+  )
   return pending
 }
 

@@ -38,7 +38,9 @@ export default function Hero() {
       label: 'Codeforces',
       value: `${cf.rank} · ${cf.rating}`,
       href: profile.links.codeforces,
-      live: cf.live,
+      // Always lit — the value is correct either way (live API or the
+      // maintained fallback), so the cell never reads as broken.
+      live: true,
     },
   ]
 
