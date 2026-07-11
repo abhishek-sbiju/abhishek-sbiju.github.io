@@ -43,8 +43,8 @@ export default function Hero() {
   ]
 
   return (
-    <section className="border-b border-line pt-12">
-      <div className="grid gap-px bg-line lg:grid-cols-[7fr_5fr]">
+    <section className="flex min-h-svh flex-col border-b border-line pt-12">
+      <div className="grid flex-1 gap-px bg-line lg:grid-cols-[7fr_5fr]">
         {/* Headline cell */}
         <div className="flex min-w-0 flex-col justify-center bg-bg px-5 py-14 sm:px-10 lg:py-20">
           <h1 className="font-display text-[clamp(3.25rem,9vw,7.5rem)] leading-[0.92] font-extrabold tracking-tight uppercase">
@@ -117,7 +117,7 @@ export default function Hero() {
       </div>
 
       {/* Fact strip — Swiss exposed-grid cells */}
-      <div className="grid gap-px border-t border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
+      <div className="grid shrink-0 gap-px border-t border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
         {facts.map((fact) => {
           const body = (
             <>

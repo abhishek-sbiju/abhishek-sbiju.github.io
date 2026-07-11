@@ -19,7 +19,7 @@ export default function Contact() {
       meta="IST · UTC+5:30"
     >
       <Reveal>
-        <div className="watermark px-5 py-14 sm:px-10 sm:py-20">
+        <div className="watermark flex h-full flex-col justify-center px-5 py-14 sm:px-10 sm:py-20">
           <p className="max-w-2xl text-base leading-relaxed text-muted sm:text-lg">
             I'm open to software engineering internships, agency projects, and conversations about
             restaurant tech. The fastest way to reach me is email — I reply to everything that
