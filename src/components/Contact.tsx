@@ -21,7 +21,7 @@ export default function Contact() {
       <Reveal>
         <div className="watermark px-5 py-14 sm:px-10 sm:py-20">
           <p className="max-w-2xl text-base leading-relaxed text-muted sm:text-lg">
-            I'm open to software engineering internships, freelance builds, and conversations about
+            I'm open to software engineering internships, agency projects, and conversations about
             restaurant tech. The fastest way to reach me is email — I reply to everything that
             isn't spam.
           </p>
