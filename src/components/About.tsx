@@ -12,7 +12,7 @@ export default function About() {
     <Section id="about" eyebrow="About" title="Builder first, student second." meta="Chennai & Goa · IST">
       <div className="grid gap-px bg-line lg:grid-cols-[7fr_5fr]">
         <Reveal className="bg-bg">
-          <div className="space-y-5 px-5 py-10 text-base leading-relaxed text-muted sm:px-10 sm:text-lg">
+          <div className="flex h-full flex-col justify-center space-y-5 px-5 py-12 text-base leading-relaxed text-muted sm:px-10 sm:text-lg">
             <p>
               I'm Abhishek — a third-year computer science student at BITS Pilani, Goa, who would
               rather ship something real than polish a toy project. In my first two years I founded{' '}
@@ -38,11 +38,11 @@ export default function About() {
         </Reveal>
 
         <Reveal delay={0.1} className="bg-bg">
-          <div className="flex h-full flex-col px-5 py-10 sm:px-8">
+          <div className="flex h-full flex-col justify-center px-5 py-12 sm:px-8">
             <p className="font-mono text-[10px] tracking-[0.35em] text-accent uppercase">
               Currently
             </p>
-            <ul className="mt-5 space-y-4">
+            <ul className="mt-6 space-y-5">
               {currently.map((item) => (
                 <li key={item} className="flex gap-3 text-sm leading-relaxed text-ink">
                   <span className="mt-0.5 text-pass" aria-hidden="true">
@@ -52,7 +52,6 @@ export default function About() {
                 </li>
               ))}
             </ul>
-            <div aria-hidden="true" className="watermark mt-8 min-h-16 flex-1 border-t border-line" />
           </div>
         </Reveal>
       </div>
