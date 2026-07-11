@@ -7,8 +7,11 @@ import { useGithub } from '../hooks/useGithub'
 const USERNAME = 'abhishek-sbiju'
 
 // Public widget services, themed to the paper/ink/gold system.
-const CHART = `https://ghchart.rshah.org/8f7317/${USERNAME}`
-const STREAK = `https://streak-stats.demolab.com?user=${USERNAME}&hide_border=true&background=FAF9F5&ring=d4af37&fire=d4af37&stroke=e3e0d5&currStreakLabel=8f7317&sideLabels=1b1a16&currStreakNum=1b1a16&sideNums=1b1a16&dates=6b675a`
+// A daily cache-buster keeps the charts current — both services cache
+// aggressively, and the calendar includes private-contribution counts.
+const TODAY = new Date().toISOString().slice(0, 10)
+const CHART = `https://ghchart.rshah.org/8f7317/${USERNAME}?d=${TODAY}`
+const STREAK = `https://streak-stats.demolab.com?user=${USERNAME}&hide_border=true&background=FAF9F5&ring=d4af37&fire=d4af37&stroke=e3e0d5&currStreakLabel=8f7317&sideLabels=1b1a16&currStreakNum=1b1a16&sideNums=1b1a16&dates=6b675a&d=${TODAY}`
 
 function hideOnError(event: React.SyntheticEvent<HTMLImageElement>) {
   event.currentTarget.style.display = 'none'
