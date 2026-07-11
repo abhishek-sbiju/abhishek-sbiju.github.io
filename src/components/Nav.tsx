@@ -54,7 +54,6 @@ export default function Nav() {
         >
           Abhishek Smitha Biju<span className="text-accent">.</span>
         </a>
-        <div aria-hidden="true" className="watermark h-36 w-full shrink-0 border-t border-line" />
       </div>
 
       {/* Hairline top bar with a gold reading-progress hairline. */}
