@@ -41,6 +41,14 @@
 
 html {
   scroll-behavior: smooth;
+  /* No visible scrollbar — the gold hairline under the top bar tracks
+     reading position instead. Scrolling itself is untouched. */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+html::-webkit-scrollbar {
+  display: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
