@@ -1,4 +1,4 @@
-import { ArrowUpRight } from 'lucide-react'
+import { ArrowUpRight, Lock } from 'lucide-react'
 import Section from './Section'
 import Reveal from './Reveal'
 import { profile } from '../data/profile'
@@ -22,6 +22,11 @@ export default function GithubSection() {
 
   const stats = [
     { label: 'Public repos', value: gh.live ? String(gh.publicRepos) : '—' },
+    { label: 'Private repos', value: String(profile.github.privateRepos), locked: true },
+    {
+      label: 'Total repos',
+      value: gh.live ? String(gh.publicRepos + profile.github.privateRepos) : '—',
+    },
     { label: 'Followers', value: gh.live ? String(gh.followers) : '—' },
     { label: 'On GitHub since', value: gh.since ?? '—' },
   ]
@@ -78,7 +83,10 @@ export default function GithubSection() {
                     key={stat.label}
                     className="flex items-baseline justify-between gap-3 border-b border-line py-2.5 last:border-b-0"
                   >
-                    <span className="text-sm text-muted">{stat.label}</span>
+                    <span className="inline-flex items-center gap-1.5 text-sm text-muted">
+                      {stat.locked && <Lock className="size-3 text-accent" aria-hidden="true" />}
+                      {stat.label}
+                    </span>
                     <span className="font-mono text-sm font-semibold text-ink">{stat.value}</span>
                   </li>
                 ))}
@@ -101,7 +109,7 @@ export default function GithubSection() {
                 Most used languages
               </p>
               {gh.languages.length > 0 ? (
-                <ul className="mt-4 space-y-3.5">
+                <ul className="mt-4 flex-1 space-y-3.5">
                   {gh.languages.map((lang) => (
                     <li key={lang.name}>
                       <div className="flex items-baseline justify-between gap-3">
@@ -115,10 +123,13 @@ export default function GithubSection() {
                   ))}
                 </ul>
               ) : (
-                <p className="mt-4 text-sm text-muted">
+                <p className="mt-4 flex-1 text-sm text-muted">
                   Live from the GitHub API — loading, or check the profile directly.
                 </p>
               )}
+              <p className="mt-4 border-t border-line pt-3 font-mono text-[10px] tracking-[0.15em] text-muted uppercase">
+                Split from public repos · {profile.github.privateLanguageNote}
+              </p>
             </div>
           </Reveal>
 
