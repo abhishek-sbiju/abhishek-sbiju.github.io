@@ -17,6 +17,16 @@ export default function ProjectCard({ project, index }: { project: Project; inde
         aria-hidden="true"
         className="absolute inset-y-0 left-0 w-1 origin-top scale-y-0 bg-gold transition-transform duration-300 group-hover:scale-y-100 motion-reduce:transition-none"
       />
+      {project.image && (
+        <figure className="-mx-5 -mt-8 mb-6 border-b border-line sm:-mx-8">
+          <img
+            src={project.image}
+            alt={`${project.name} screenshot`}
+            loading="lazy"
+            className="aspect-video w-full object-cover"
+          />
+        </figure>
+      )}
       <div className="flex items-start justify-between gap-4">
         <p className="font-mono text-[10px] tracking-[0.25em] text-muted uppercase transition-colors duration-300 group-hover:text-accent">
           {String(index + 1).padStart(2, '0')}

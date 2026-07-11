@@ -7,6 +7,8 @@ export interface Project {
   github?: string
   live?: string
   badge?: 'Client work' | 'Internal tooling'
+  /** Optional screenshot path (put the file in public/ and reference it here). */
+  image?: string
 }
 
 export const projects: Project[] = [

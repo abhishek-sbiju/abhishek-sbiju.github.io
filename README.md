@@ -21,13 +21,27 @@ All portfolio content lives in `src/data/` — no component edits needed:
 
 | File | What it holds |
 | --- | --- |
-| `profile.ts` | Name, headline, location, email, social links, resume filename |
+| `profile.ts` | Name, headline, location, email, social links, resume filename, Codeforces handle |
 | `experience.ts` | Roles, dates, bullets, stack |
-| `projects.ts` | Project cards (GitHub / live links, tags, badges) |
+| `projects.ts` | Featured project cards (GitHub / live links, tags, badges, optional `image`) |
+| `privateProjects.ts` | Private-repo showcase cards (role, features, tags, note) |
 | `skills.ts` | Skill groups |
 | `education.ts` | Degree, achievements, certifications (empty array = section hidden) |
 
 The resume served by the download buttons is `public/Abhishek_Smitha_Biju_Resume.pdf` — replace that file to update it.
+
+### Live data
+
+- **Codeforces rating** — `src/hooks/useCodeforces.ts` fetches the official Codeforces API on load; change the handle (and offline fallback) in `profile.ts`.
+- **GitHub numbers** — `src/hooks/useGithub.ts` fetches the public GitHub API for repo/follower counts; the contribution calendar, stats card, top languages, and streak in `src/components/GithubSection.tsx` come from public widget services (ghchart.rshah.org, github-readme-stats, streak-stats) themed to the palette. Change `USERNAME` there to point at another account.
+
+## Customization
+
+- **Identity** — start in `src/data/profile.ts`; every section reads from it.
+- **Screenshots** — drop an image into `public/` and set `image: '/your-shot.png'` on any project in `projects.ts`; the card grows a 16:9 figure above the text.
+- **Palette & type** — all tokens are CSS variables at the top of `src/index.css` (`--c-*`), mapped into Tailwind via `@theme inline`. The gold, paper, ink, and pass-green live there; change them once and the whole site follows.
+- **Watermark** — the 45° drifting "security print" is an inline SVG data-URI in `src/index.css` (`--watermark`); replace the text `abhishek` inside it with your own mark.
+- **Certifications** — add entries to the `certifications` array in `education.ts` and the section appears automatically.
 
 ## Deploying to GitHub Pages
 

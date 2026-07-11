@@ -8,6 +8,8 @@ const links = [
   { href: '#skills', label: 'Skills' },
   { href: '#experience', label: 'Experience' },
   { href: '#projects', label: 'Projects' },
+  { href: '#private', label: 'Private' },
+  { href: '#github', label: 'GitHub' },
   { href: '#education', label: 'Education' },
   { href: '#contact', label: 'Contact' },
 ]
@@ -74,7 +76,7 @@ export default function Nav() {
                   <a
                     href={link.href}
                     aria-current={isActive ? 'true' : undefined}
-                    className={`flex items-center gap-2 px-4 font-mono text-[11px] tracking-[0.2em] uppercase transition-colors hover:bg-accent-soft hover:text-ink ${
+                    className={`flex items-center gap-2 px-3 font-mono text-[11px] tracking-[0.2em] uppercase transition-colors hover:bg-accent-soft hover:text-ink xl:px-4 ${
                       isActive ? 'text-ink' : 'text-muted'
                     }`}
                   >
