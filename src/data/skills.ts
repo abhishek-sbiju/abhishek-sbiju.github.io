@@ -11,9 +11,9 @@ export const skillGroups: SkillGroup[] = [
     items: ['Node.js', 'Firebase (Firestore, Auth, Storage)', 'Vercel'],
   },
   { label: 'Testing', items: ['Playwright', 'playwright-bdd'] },
-  { label: 'Tools', items: ['Git', 'GitHub', 'Jira', 'VS Code'] },
+  { label: 'Tools', items: ['Git', 'GitHub', 'Jira', 'VS Code', 'Unity'] },
   {
     label: 'Competitive Programming',
-    items: ['Codeforces Specialist', 'Data structures', 'Dynamic programming'],
+    items: ['Codeforces Specialist', '265+ problems solved', 'Data structures', 'Dynamic programming'],
   },
 ]

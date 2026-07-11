@@ -39,6 +39,15 @@ export const projects: Project[] = [
     badge: 'Client work',
   },
   {
+    name: 'SpaceSaber',
+    tagline: '2D space shooter built in Unity',
+    description:
+      'A fast-paced arcade shooter: three levels, six enemy bot types — three of them tracking the player’s cursor — custom enemy pathfinding, and a soundtrack per level. Reflex-based combat that keeps getting harder the longer you survive.',
+    highlight: 'Playable build on itch.io',
+    tags: ['Unity', 'C#'],
+    github: 'https://github.com/abhishek-sbiju/SpaceSaber',
+  },
+  {
     name: 'Restaurant sites in production',
     tagline: 'Five+ client websites, idea to live deployment',
     description:

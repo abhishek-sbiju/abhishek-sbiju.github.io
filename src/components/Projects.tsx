@@ -13,7 +13,11 @@ export default function Projects() {
     >
       <div className="grid gap-px bg-line md:grid-cols-2">
         {projects.map((project, i) => (
-          <Reveal key={project.name} delay={(i % 2) * 0.08} className="h-full bg-bg">
+          <Reveal
+            key={project.name}
+            delay={(i % 2) * 0.08}
+            className="h-full bg-bg md:last:odd:col-span-2"
+          >
             <ProjectCard project={project} index={i} />
           </Reveal>
         ))}
