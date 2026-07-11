@@ -18,7 +18,7 @@
   --c-gold: #d4af37;
   --c-accent-soft: rgba(212, 175, 55, 0.12);
   --c-pass: #0e8a61;
-  --watermark: url("data:image/svg+xml,%3Csvg width='44' height='44' xmlns='http://www.w3.org/2000/svg'%3E%3Cg transform='rotate(-45 22 22)'%3E%3Ctext x='22' y='24' font-family='sans-serif' font-size='7' font-weight='700' fill='%23755607' opacity='0.3' text-anchor='middle' letter-spacing='0.2'%3Eabhishek%3C/text%3E%3C/g%3E%3C/svg%3E");
+  --watermark: url("data:image/svg+xml,%3Csvg width='56' height='56' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M28 23v10M23 28h10' stroke='%23b08d2a' stroke-opacity='0.28' stroke-width='1'/%3E%3C/svg%3E");
   color-scheme: light;
 }
 
@@ -77,12 +77,12 @@ body {
   outline-offset: 3px;
 }
 
-/* 45° tiled name watermark — the brand's security print. It fills the
-   rail strip and empty grid cells, and drifts along its own 45° grain. */
+/* Registration marks — the printer's alignment "+" — fill empty grid
+   cells like a press sheet, drifting slowly along the 45° grain. */
 .watermark {
   background-image: var(--watermark);
-  background-size: 44px 44px;
-  animation: wm-drift 12s linear infinite;
+  background-size: 56px 56px;
+  animation: wm-drift 16s linear infinite;
 }
 
 @keyframes wm-drift {
@@ -90,7 +90,7 @@ body {
     background-position: 0 0;
   }
   to {
-    background-position: 44px 44px;
+    background-position: 56px 56px;
   }
 }
 
