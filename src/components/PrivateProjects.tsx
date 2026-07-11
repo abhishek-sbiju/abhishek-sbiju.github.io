@@ -11,9 +11,9 @@ export default function PrivateProjects() {
       title="Built behind closed doors."
       meta={`${privateProjects.length} private builds`}
     >
-      <div className="grid gap-px bg-line lg:grid-cols-3">
+      <div className="grid gap-px bg-line lg:grid-cols-2">
         {privateProjects.map((project, i) => (
-          <Reveal key={project.name} delay={(i % 3) * 0.08} className="h-full bg-bg">
+          <Reveal key={project.name} delay={(i % 2) * 0.08} className="h-full bg-bg">
             <article className="flex h-full flex-col px-5 py-8 sm:px-8">
               <div className="flex items-center justify-between gap-4">
                 <span className="inline-flex items-center gap-1.5 bg-accent-soft px-2.5 py-1 font-mono text-[10px] tracking-[0.2em] text-accent uppercase">

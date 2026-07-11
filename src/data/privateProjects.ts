@@ -28,29 +28,16 @@ export const privateProjects: PrivateProject[] = [
     name: 'Restaurant Client Fleet',
     tagline: '~12 production builds for paying clients',
     description:
-      'Production websites and QR menu cards for cafés and restaurants, built across three stacks — Next.js + Firebase sites, Vite menu cards, and TanStack Start websites — each with its own visual identity. Solved the real owner problem: menus they could edit themselves from a spreadsheet, without calling a developer.',
+      'A full software system per restaurant — website, QR menu, owner admin, and print — that owners control end to end without ever calling a developer. Built across three stacks (Next.js + Firebase sites, Vite menu cards, TanStack Start websites), each with its own visual identity.',
     role: 'Designer & developer',
     features: [
-      'Owner-editable menus from Google Sheets',
+      'Owner-editable menus from Google Sheets — no developer needed',
       'Galleries, reservations, press and testimonials',
       'Secure owner admin per site',
+      'Print-ready A4 menu cards generated from the same live menu data',
       'Themes built per brand, not from a template',
     ],
     tags: ['Next.js', 'React', 'Vite', 'TanStack Start', 'Tailwind CSS'],
     note: 'Client repositories — private by contract',
-  },
-  {
-    name: 'Print Menu Studio',
-    tagline: 'Six premium A4 menu-card templates',
-    description:
-      'Art-directed print menu templates with an HTML-to-PDF pipeline, driven by the same menu data that powers the digital menus. Solved the last mile of the one-edit-everywhere promise: the printed card on the table stays in sync with the QR menu.',
-    role: 'Designer & developer',
-    features: [
-      'Six distinct art-directed layouts',
-      'Data-driven from the live menu source',
-      'Print-ready A4 PDFs on demand',
-    ],
-    tags: ['HTML/CSS', 'PDF pipeline', 'TypeScript'],
-    note: 'Versor internal asset',
   },
 ]
