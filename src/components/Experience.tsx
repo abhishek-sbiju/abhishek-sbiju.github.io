@@ -56,6 +56,18 @@ export default function Experience() {
                 </ul>
 
                 <p className="mt-5 font-mono text-xs text-muted">{entry.stack.join(' · ')}</p>
+
+                {entry.deck && (
+                  <a
+                    href={entry.deck.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-4 inline-flex items-center gap-1 font-mono text-xs tracking-[0.15em] text-accent uppercase underline-offset-4 hover:underline"
+                  >
+                    {entry.deck.label}
+                    <ArrowUpRight className="size-3.5" aria-hidden="true" />
+                  </a>
+                )}
               </div>
             </article>
           </Reveal>

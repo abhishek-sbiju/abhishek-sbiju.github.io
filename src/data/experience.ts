@@ -6,6 +6,7 @@ export interface ExperienceEntry {
   summary: string
   bullets: string[]
   stack: string[]
+  deck?: { label: string; url: string }
 }
 
 export const experience: ExperienceEntry[] = [
@@ -23,6 +24,7 @@ export const experience: ExperienceEntry[] = [
       'Analysed 36 real journeys and found 82% of their steps recur, collapsing them onto ~111 reusable building blocks — a ~13× reduction and the argument for a reuse-first migration; authored and presented the high-level design.',
     ],
     stack: ['Playwright', 'playwright-bdd', 'Node.js', 'React', 'Git', 'Jira'],
+    deck: { label: 'Open the interactive work deck', url: '/fourkites-deck.html' },
   },
   {
     role: 'Founder',
