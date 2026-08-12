@@ -6,6 +6,8 @@ export interface Project {
   tags: string[]
   github?: string
   live?: string
+  /** Extra labelled links, for entries that point at more than one place. */
+  links?: { label: string; url: string }[]
   badge?: 'Client work' | 'Internal tooling' | 'Open source'
   /** Optional screenshot path (put the file in public/ and reference it here). */
   image?: string
@@ -54,14 +56,14 @@ export const projects: Project[] = [
     name: 'SpaceSaber & The Last Human',
     tagline: 'Two Unity games, built and published',
     description:
-      'A 2D space shooter and a 2D platformer, both built through Unity course projects and taken all the way to a published, browser-playable build — art, audio, packaging and release included. On SpaceSaber I reworked the level layouts and the menu rather than shipping the course’s; the underlying gameplay systems are the course’s own. How I learned that finishing and shipping is a separate skill from writing the code.',
-    highlight: 'Playable in the browser · source public',
+      'A 2D space shooter and a 2D platformer, both built through Unity course projects and taken all the way to a published release — art, audio, packaging and shipping included. SpaceSaber plays in the browser; The Last Human is a downloadable build. On SpaceSaber I reworked the level layouts and the menu rather than shipping the course’s; the underlying gameplay systems are the course’s own. How I learned that finishing and shipping is a separate skill from writing the code.',
+    highlight: 'Both published on itch.io · source public',
     tags: ['Unity', 'C#'],
     github: 'https://github.com/abhishek-sbiju/SpaceSaber',
-    // Profile page rather than a single game, so it lists whatever is actually
-    // published — SpaceSaber's README says "Play Now", The Last Human's still
-    // says "Play Soon".
-    live: 'https://abhisheksbiju.itch.io',
+    links: [
+      { label: 'Play', url: 'https://abhisheksbiju.itch.io/spacesaber' },
+      { label: 'Download', url: 'https://abhisheksbiju.itch.io/thelasthuman' },
+    ],
   },
   {
     name: 'Restaurant sites in production',

@@ -55,7 +55,7 @@ export default function ProjectCard({ project, index }: { project: Project; inde
             </li>
           ))}
         </ul>
-        <div className="flex shrink-0 items-center gap-3">
+        <div className="flex shrink-0 flex-wrap items-center justify-end gap-x-3 gap-y-1">
           {project.github && (
             <a
               href={project.github}
@@ -78,6 +78,18 @@ export default function ProjectCard({ project, index }: { project: Project; inde
               <ArrowUpRight className="size-3.5" aria-hidden="true" />
             </a>
           )}
+          {project.links?.map((link) => (
+            <a
+              key={link.url}
+              href={link.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 font-mono text-[11px] tracking-[0.2em] text-accent uppercase underline-offset-4 hover:underline"
+            >
+              {link.label}
+              <ArrowUpRight className="size-3.5" aria-hidden="true" />
+            </a>
+          ))}
         </div>
       </div>
     </article>
