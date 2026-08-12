@@ -7,13 +7,14 @@ export const profile = {
   availability: 'Open to SWE internship roles',
   headline: 'I ship software end to end — then prove it works.',
   subheadline:
-    'Third-year CS at BITS Pilani, Goa. Founder of Versor, a restaurant menu platform with five paying customers. Currently automating end-to-end tests at FourKites. Codeforces Specialist.',
+    'Third-year CS at BITS Pilani, Goa. Founder of Versor, a restaurant menu platform deployed in 13 venues. Built the test-migration tooling at FourKites, where the part I am proudest of is the oracle that blocks tests which pass when they should not. Codeforces Specialist.',
   resumeFile: 'Abhishek_Smitha_Biju_Resume.pdf',
   links: {
     github: 'https://github.com/abhishek-sbiju',
     linkedin: 'https://www.linkedin.com/in/abhishek-smitha-biju-7a739b321',
     codeforces: 'https://codeforces.com/profile/Abhishek_S_Biju',
     versor: 'https://versor.in',
+    invariant: 'https://invariant.org.in/learn/dsa',
   },
   // Live rating is fetched from the Codeforces API (useCodeforces);
   // these values only show if the request fails.

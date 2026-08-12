@@ -9,6 +9,7 @@ const externalLinks = [
   { label: 'LinkedIn', href: profile.links.linkedin },
   { label: 'Codeforces', href: profile.links.codeforces },
   { label: 'versor.in', href: profile.links.versor },
+  { label: 'invariant.org.in', href: profile.links.invariant },
 ]
 
 const ease = [0.22, 1, 0.36, 1] as const
@@ -33,7 +34,7 @@ export default function Hero() {
   const facts = [
     { label: 'Based', value: profile.location },
     { label: 'Status', value: profile.availability, live: true },
-    { label: 'Currently', value: 'SWE Intern @ FourKites · Founder @ Versor' },
+    { label: 'Currently', value: 'Founder @ Versor · SWE Intern @ FourKites (May–Jul 2026)' },
     {
       label: 'Codeforces',
       value: `${cf.rank} · ${cf.rating}`,

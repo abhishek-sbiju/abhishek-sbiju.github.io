@@ -14,7 +14,7 @@ function buildLines(rating: number, rank: string): SpecLine[] {
     { text: "test('abhishek smitha biju', () => {", indent: 0 },
     { text: "expect(role).toBe('engineer & founder')", indent: 1, assert: true },
     { text: "expect(fourkites).toMigrate('virtuoso → playwright')", indent: 1, assert: true },
-    { text: 'expect(versor.customers).toBeGreaterThan(4)', indent: 1, assert: true },
+    { text: 'expect(versor.venues).toBe(13)', indent: 1, assert: true },
     {
       text: `expect(codeforces.rating).toBe(${rating})`,
       indent: 1,
@@ -108,8 +108,8 @@ export default function SpecRunner() {
       </div>
 
       <p className="sr-only">
-        All checks pass: engineer and founder, Playwright test migration at FourKites, five Versor
-        customers, Codeforces rating {cf.rating}.
+        All checks pass: engineer and founder, Playwright test migration at FourKites, thirteen
+        Versor venues, Codeforces rating {cf.rating}.
       </p>
     </div>
   )

@@ -2,8 +2,8 @@ import Section from './Section'
 import Reveal from './Reveal'
 
 const currently = [
-  'Interning on test automation at FourKites, Chennai',
   'Growing Versor into a subscription SaaS',
+  'Building Invariant — a teaching site that refuses to ship an unchecked claim',
   'Practising C++ on Codeforces — DS & DP',
 ]
 
@@ -25,14 +25,29 @@ export default function About() {
                 Versor
               </a>
               , a smart-menu platform for restaurants. I wrote every layer of it, sat through 70+
-              customer-discovery meetings, and kept knocking on doors until five restaurants were
-              paying for it.
+              customer-discovery meetings, and kept knocking on doors until it was running in
+              thirteen venues.
             </p>
             <p>
-              This summer I'm a software engineer intern at FourKites, building the converter that
-              turns recorded VirtuosoQA journeys into runnable Playwright tests — work where the
-              output isn't a promise, it's a passing suite. That's the standard I hold my own
-              projects to: if it isn't verified, it isn't done.
+              This summer I was a software engineer intern at FourKites, where I wrote the design
+              for the VirtuosoQA → Playwright test migration and built the converter behind it. The
+              part I'm proudest of isn't the tests I migrated — it's the oracle I built beside them,
+              which reconciles every migrated test against its original recording and blocks any
+              test that passes when it shouldn't. A green test that asserts nothing is worse than no
+              test at all.
+            </p>
+            <p>
+              That's the standard I hold my own projects to. It's the whole idea behind{' '}
+              <a
+                href="https://invariant.org.in/learn/dsa"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-medium text-ink underline decoration-gold underline-offset-4 hover:text-accent"
+              >
+                Invariant
+              </a>
+              , where nothing reaches a reader that the build hasn't checked: if it isn't verified,
+              it isn't done.
             </p>
           </div>
         </Reveal>

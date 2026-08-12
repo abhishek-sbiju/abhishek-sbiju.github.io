@@ -8,6 +8,7 @@ const socials = [
   { label: 'LinkedIn', href: profile.links.linkedin },
   { label: 'Codeforces', href: profile.links.codeforces },
   { label: 'versor.in', href: profile.links.versor },
+  { label: 'invariant.org.in', href: profile.links.invariant },
 ]
 
 export default function Contact() {
