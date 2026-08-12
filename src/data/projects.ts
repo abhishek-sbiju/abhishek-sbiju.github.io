@@ -51,23 +51,17 @@ export const projects: Project[] = [
     badge: 'Client work',
   },
   {
-    name: 'SpaceSaber',
-    tagline: '2D space shooter built in Unity',
+    name: 'SpaceSaber & The Last Human',
+    tagline: 'Two Unity games, built and published',
     description:
-      'A fast-paced arcade shooter: three levels, six enemy bot types — three of them tracking the player’s cursor — custom enemy pathfinding, and a soundtrack per level. Reflex-based combat that keeps getting harder the longer you survive.',
-    highlight: 'Playable build on itch.io',
+      'A 2D space shooter and a 2D platformer, both built through Unity course projects and taken all the way to a published, browser-playable build — art, audio, packaging and release included. On SpaceSaber I reworked the level layouts and the menu rather than shipping the course’s; the underlying gameplay systems are the course’s own. How I learned that finishing and shipping is a separate skill from writing the code.',
+    highlight: 'Playable in the browser · source public',
     tags: ['Unity', 'C#'],
     github: 'https://github.com/abhishek-sbiju/SpaceSaber',
-    live: 'https://abhisheksbiju.itch.io/spacesaber',
-  },
-  {
-    name: 'The Last Human',
-    tagline: '2D platformer built in Unity',
-    description:
-      'Hand-built levels with mouse-aimed combat and double-jump traversal, enemy behaviour written by hand rather than dropped in from a package. Published and playable in the browser, with the C# source public.',
-    tags: ['Unity', 'C#'],
-    github: 'https://github.com/abhishek-sbiju/TheLastHuman-2DGame-',
-    live: 'https://abhisheksbiju.itch.io/thelasthuman',
+    // Profile page rather than a single game, so it lists whatever is actually
+    // published — SpaceSaber's README says "Play Now", The Last Human's still
+    // says "Play Soon".
+    live: 'https://abhisheksbiju.itch.io',
   },
   {
     name: 'Restaurant sites in production',
