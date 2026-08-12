@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Abhishek S Biju — Work Summary &amp; Résumé</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Spline+Sans+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#faf7f1; --panel:#ffffff; --ink:#1c1814;
+  --gold:#b8860b; --gold-deep:#8f690a; --muted:#776e5e;
+  --line:#e4ddce; --flash:rgba(184,134,11,.16);
+  --pass:#2e7d4f; --pass-bg:rgba(46,125,79,.10);
+  --crit:#b0362c; --crit-bg:rgba(176,54,44,.09);
+  --disp:'Bricolage Grotesque','Arial Narrow',sans-serif;
+  --mono:'Spline Sans Mono','SF Mono',Consolas,monospace;
+  --wm:url("data:image/svg+xml,%3Csvg width='72' height='72' xmlns='http://www.w3.org/2000/svg'%3E%3Cg transform='rotate(-45 36 36)'%3E%3Ctext x='36' y='38' font-family='sans-serif' font-size='6' font-weight='700' fill='%23755607' opacity='0.30' text-anchor='middle' letter-spacing='0.5'%3EABHISHEK%20S%20BIJU%3C/text%3E%3C/g%3E%3C/svg%3E");
+  --wm-bright:url("data:image/svg+xml,%3Csvg width='56' height='56' xmlns='http://www.w3.org/2000/svg'%3E%3Cg transform='rotate(-45 28 28)'%3E%3Ctext x='28' y='30' font-family='sans-serif' font-size='6' font-weight='700' fill='%238F690A' opacity='0.9' text-anchor='middle' letter-spacing='0.5'%3ESHIP%20IT.%20PROVE%20IT.%3C/text%3E%3C/g%3E%3C/svg%3E");
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  background:var(--paper);
+  background-image:var(--wm);
+  background-size:72px 72px;
+  color:var(--ink);
+  font-family:var(--disp);
+  overflow:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+::selection{background:var(--gold);color:#fff}
+
+/* ============ STAGE ============ */
+.stage{
+  position:absolute;top:50%;left:50%;
+  width:1280px;height:720px;
+  transform:translate(-50%,-50%);
+  background:var(--paper);
+  border:1px solid var(--line);
+  box-shadow:0 24px 80px rgba(28,24,20,.14);
+  overflow:hidden;
+}
+.progress{position:absolute;top:0;left:0;height:2px;background:var(--gold);width:0;z-index:40;transition:width .45s cubic-bezier(.22,.6,.2,1)}
+
+/* ============ RAIL ============ */
+.rail{
+  position:absolute;top:0;left:0;bottom:0;width:46px;z-index:30;
+  background:linear-gradient(to bottom,
+    color-mix(in srgb,var(--gold) 9%,var(--paper)),
+    color-mix(in srgb,var(--gold) 26%,var(--paper)));
+  border-right:1px solid color-mix(in srgb,var(--gold) 30%,var(--line));
+  display:flex;flex-direction:column;align-items:stretch;
+}
+.rail-mark{height:46px;flex:none;display:flex;align-items:center;justify-content:center;
+  border-bottom:1px solid color-mix(in srgb,var(--gold) 24%,var(--line))}
+.rail-mark svg{display:block}
+.rail-word{flex:1;display:flex;align-items:center;justify-content:center;
+  writing-mode:vertical-rl;transform:rotate(180deg);
+  font-weight:800;font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:var(--ink)}
+.rail-word b{color:var(--gold);font-weight:800}
+.rail-num{height:46px;flex:none;display:flex;align-items:center;justify-content:center;
+  border-top:1px solid color-mix(in srgb,var(--gold) 24%,var(--line));
+  font-family:var(--mono);font-size:.6rem;font-weight:600;letter-spacing:.1em;color:var(--gold-deep)}
+
+/* ============ SLIDES ============ */
+.slide{
+  position:absolute;inset:0;
+  padding:40px 52px 20px 94px;
+  display:flex;flex-direction:column;
+  opacity:0;visibility:hidden;
+  transition:opacity .45s ease,visibility 0s linear .45s;
+}
+.slide.active{opacity:1;visibility:visible;transition:opacity .45s ease}
+.shead{display:flex;justify-content:space-between;align-items:baseline;flex:none}
+.sbody{flex:1;min-height:0;display:flex;flex-direction:column;padding-top:16px}
+.sfoot{flex:none;border-top:1px solid var(--line);margin-top:14px;padding-top:9px;
+  display:flex;justify-content:space-between}
+
+.mono{font-family:var(--mono);font-size:.66rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase}
+.meta{color:var(--gold);font-weight:600}
+.dim{color:var(--muted)}
+.fnum{color:var(--muted)}
+
+h2{font-size:2.05rem;font-weight:800;letter-spacing:-.015em;line-height:1.04;text-transform:uppercase;margin-top:6px}
+.lede{font-size:.95rem;line-height:1.55;color:var(--muted);max-width:600px;margin-top:8px}
+.lede strong{color:var(--ink);font-weight:600}
+
+/* reveal */
+[data-r]{opacity:0;transform:translateY(12px);
+  transition:opacity .5s cubic-bezier(.22,.6,.2,1),transform .5s cubic-bezier(.22,.6,.2,1)}
+[data-r].in{opacity:1;transform:none}
+
+/* exposed grid */
+.xg{display:grid;gap:1px;background:var(--line);border:1px solid var(--line)}
+.xc{background:var(--paper);padding:18px 20px;min-width:0;position:relative;overflow:hidden}
+.xc.panel{background:var(--panel)}
+.xc h4{font-size:.92rem;font-weight:700;letter-spacing:-.01em;margin-bottom:5px}
+.xc p{font-size:.78rem;line-height:1.5;color:var(--muted)}
+.xc .tag{display:block;margin-bottom:8px}
+
+/* gold sweep */
+.sweep::after{content:'';position:absolute;top:0;left:-40%;width:32%;height:100%;
+  background:linear-gradient(105deg,transparent,var(--flash),transparent);
+  opacity:0;pointer-events:none}
+.active .sweep::after{animation:sweep 1.1s ease .5s 1 forwards}
+@keyframes sweep{0%{left:-40%;opacity:1}100%{left:120%;opacity:0}}
+
+/* dots & chips */
+.dot{display:inline-block;width:7px;height:7px;background:var(--pass);flex:none}
+.dot.live{animation:pulse 1.6s ease infinite}
+.dot.gold{background:var(--gold)}
+.dot.red{background:var(--crit)}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.25}}
+.chip{display:inline-block;font-family:var(--mono);font-size:.58rem;font-weight:600;
+  letter-spacing:.14em;text-transform:uppercase;padding:3px 8px;border:1px solid var(--line)}
+.chip.ok{color:var(--pass);border-color:color-mix(in srgb,var(--pass) 40%,var(--line));background:var(--pass-bg)}
+.chip.warn{color:var(--gold-deep);border-color:color-mix(in srgb,var(--gold) 45%,var(--line));background:var(--flash)}
+.chip.crit{color:var(--crit);border-color:color-mix(in srgb,var(--crit) 40%,var(--line));background:var(--crit-bg)}
+.chip.mut{color:var(--muted)}
+
+/* ============ S1 COVER ============ */
+#s1{padding-top:0;padding-bottom:20px}
+#s1 .cover-top{flex:none;display:flex;justify-content:space-between;align-items:center;
+  border-bottom:1px solid var(--line);padding:18px 0 14px}
+#s1 .cover-mid{flex:1;display:flex;flex-direction:column;justify-content:center}
+.hero-t{font-size:8.2rem;font-weight:800;line-height:.92;letter-spacing:-.03em;text-transform:uppercase}
+.hero-t .fill,.thx-t .fill{
+  background-color:var(--paper);
+  background-image:var(--wm-bright);background-size:38px 38px;
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  -webkit-text-stroke:2px var(--gold-deep);
+}
+.hero-t .gd{color:var(--gold)}
+.hero-sub{margin-top:22px;font-size:1.1rem;color:var(--muted);letter-spacing:.01em}
+.hero-sub strong{color:var(--ink);font-weight:600}
+.cover-status{display:flex;align-items:center;gap:26px;margin-top:28px;padding:12px 0;
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.cover-status .st{display:flex;align-items:center;gap:9px}
+#tick{color:var(--muted);letter-spacing:.14em}
+.cover-auth{display:flex;justify-content:space-between;align-items:flex-end;margin-top:24px}
+.cover-auth .nm{font-size:1.2rem;font-weight:700}
+.cover-auth .rl{margin-top:3px}
+.hint{color:var(--muted)}
+.clip{overflow:hidden}
+.clip>span{display:block;transform:translateY(110%);transition:transform .8s cubic-bezier(.22,.7,.2,1)}
+.active .clip>span{transform:none}
+.clip.d2>span{transition-delay:.14s}
+
+/* ============ S2 GLANCE ============ */
+.gl-ident{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);flex:none}
+.gl-ident .xc{background:var(--panel)}
+.gl-stats{flex:1;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-top:none;min-height:0}
+.gl-stat{background:var(--paper);display:flex;flex-direction:column;justify-content:center;padding:14px 22px}
+.gl-stat .n{font-family:var(--mono);font-size:2.3rem;font-weight:600;color:var(--gold-deep);line-height:1}
+.gl-stat .n small{font-size:1rem;color:var(--muted)}
+.gl-stat .l{font-family:var(--mono);font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-top:8px;line-height:1.6}
+
+/* ============ S3 CONTEXT ============ */
+.prob-grid{flex:1;display:grid;grid-template-columns:5fr 7fr;gap:1px;background:var(--line);border:1px solid var(--line);min-height:0}
+.prob-left{background:var(--paper);padding:24px 26px;display:flex;flex-direction:column;justify-content:space-between}
+.prob-pains{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:1px;background:var(--line)}
+.prob-meta{border-top:1px solid var(--line);padding-top:12px;display:flex;flex-direction:column;gap:7px}
+.prob-meta span{font-family:var(--mono);font-size:.6rem;letter-spacing:.1em;color:var(--muted);text-transform:uppercase;display:flex;justify-content:space-between}
+.prob-meta b{color:var(--ink);font-weight:600}
+
+/* ============ S4 TIMELINE ============ */
+.tl{flex:1;display:flex;flex-direction:column;gap:1px;background:var(--line);border:1px solid var(--line);min-height:0}
+.tl-row{flex:1;background:var(--panel);display:flex;align-items:center;gap:20px;padding:0 24px;min-height:0}
+.tl-lb{width:250px;flex:none}
+.tl-lb h4{font-size:.95rem;font-weight:700}
+.tl-lb small{font-family:var(--mono);font-size:.56rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.tl-track{flex:1;height:26px;background:var(--paper);border:1px solid var(--line);position:relative}
+.tl-bar{position:absolute;top:0;bottom:0;background:var(--flash);box-shadow:inset 0 -3px 0 var(--gold);transform-origin:left;transform:scaleX(0)}
+.active .tl-bar{transition:transform .9s cubic-bezier(.22,.7,.2,1);transform:scaleX(1)}
+.tl-note{width:220px;flex:none;font-size:.72rem;color:var(--muted);line-height:1.45}
+.tl-note b{color:var(--ink)}
+.tl-axis{flex:none;display:flex;border:1px solid var(--line);border-top:none;background:var(--paper)}
+.tl-axis span{flex:1;font-family:var(--mono);font-size:.55rem;letter-spacing:.14em;color:var(--muted);text-transform:uppercase;padding:8px 0;text-align:center;border-right:1px solid var(--line)}
+.tl-axis span:last-child{border-right:none}
+
+/* ============ S5 DESIGN ============ */
+.dg-grid{flex:1;display:grid;grid-template-columns:7fr 5fr;gap:1px;background:var(--line);border:1px solid var(--line);min-height:0}
+.dg-cells{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:1px;background:var(--line)}
+.dg-quote{background:var(--ink);color:#e8e2d4;padding:26px 28px;display:flex;flex-direction:column;justify-content:center;gap:18px}
+.dg-quote blockquote{font-size:1.05rem;line-height:1.5;font-weight:600}
+.dg-quote blockquote i{color:#d4a843;font-style:normal}
+.dg-quote .src{font-family:var(--mono);font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:#8a8172}
+
+/* ============ S6 ADOPTION ============ */
+.ad-flow{flex:none;display:flex;align-items:stretch;gap:0;border:1px solid var(--line);background:var(--paper);margin-top:16px}
+.ad-step{flex:1;padding:18px 20px;border-right:1px solid var(--line);position:relative;background:var(--panel)}
+.ad-step:last-child{border-right:none}
+.ad-step h4{font-size:.9rem;font-weight:700;margin-top:6px}
+.ad-step p{font-size:.72rem;color:var(--muted);line-height:1.5;margin-top:4px}
+.ad-arrow{flex:none;display:flex;align-items:center;padding:0 10px;color:var(--gold);font-weight:800;border-right:1px solid var(--line);background:var(--paper)}
+.ad-notes{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-top:none;min-height:0}
+.ad-notes .xc{background:var(--paper);display:flex;flex-direction:column;justify-content:center}
+
+/* ============ S7 CONVERTER ============ */
+.pipe-wrap{flex:1;display:flex;flex-direction:column;justify-content:center;min-height:0}
+.pipe{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.pipe .xc{padding:16px 16px 14px;background:var(--panel)}
+.pipe .xc small{display:block;margin-top:5px;font-size:.7rem;color:var(--muted);line-height:1.45}
+.pipe .stg{color:var(--gold);font-weight:600}
+.track{position:relative;height:44px;margin:0 1px}
+.track::before{content:'';position:absolute;top:50%;left:0;right:0;height:1px;background:var(--line)}
+.tdot{position:absolute;top:50%;left:0;width:11px;height:11px;margin:-5.5px 0 0 -5.5px;background:var(--gold)}
+.active .tdot{animation:travel 4s cubic-bezier(.45,.05,.55,.95) infinite}
+@keyframes travel{0%{left:8%;opacity:0}6%{opacity:1}22%{left:28%}42%{left:50%}64%{left:71%}88%{left:92%;opacity:1}96%,100%{left:92%;opacity:0}}
+.cv-stats{display:flex;justify-content:space-between;align-items:center;border:1px solid var(--line);background:var(--paper);padding:14px 22px;margin-top:6px}
+.cv-stat{display:flex;align-items:baseline;gap:10px}
+.cv-stat .n{font-family:var(--mono);font-size:1.5rem;font-weight:600;color:var(--gold-deep)}
+.cv-stat .l{font-family:var(--mono);font-size:.55rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);line-height:1.5}
+
+/* ============ S8 REUSE ============ */
+.ru-grid{flex:1;display:grid;grid-template-columns:7fr 5fr;gap:1px;background:var(--line);border:1px solid var(--line);min-height:0}
+.ru-chart{background:var(--panel);padding:24px 26px;display:flex;flex-direction:column;justify-content:center;gap:20px}
+.ru-bar{display:flex;flex-direction:column;gap:7px}
+.ru-bar .hd{display:flex;justify-content:space-between;font-family:var(--mono);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.ru-bar .hd b{color:var(--ink)}
+.ru-bar .tr{height:22px;background:var(--paper);border:1px solid var(--line)}
+.ru-bar .fl{height:100%;background:var(--line);transform-origin:left;transform:scaleX(0)}
+.ru-bar .fl.g{background:var(--gold)}
+.active .ru-bar .fl{transition:transform 1.1s cubic-bezier(.22,.7,.2,1) .7s;transform:scaleX(1)}
+.ru-big{display:flex;align-items:baseline;gap:16px;border-top:1px solid var(--line);padding-top:16px}
+.ru-big .n{font-family:var(--mono);font-size:2.6rem;font-weight:600;color:var(--gold-deep)}
+.ru-big .l{font-family:var(--mono);font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);line-height:1.6}
+.ru-side{background:var(--paper);padding:24px 26px;display:flex;flex-direction:column;justify-content:center;gap:16px}
+.cn{border-left:2px solid var(--gold);padding-left:14px}
+.cn h4{font-size:.9rem;font-weight:700}
+.cn p{font-size:.76rem;color:var(--muted);line-height:1.5;margin-top:3px}
+
+/* ============ S9 DELIVERY ============ */
+.dl-grid{flex:1;display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);min-height:0}
+.dl-col{background:var(--panel);padding:14px 16px;display:flex;flex-direction:column;gap:8px;min-height:0}
+.dl-col h4{font-size:.8rem;font-weight:800;text-transform:uppercase;letter-spacing:.02em;border-bottom:1px solid var(--line);padding-bottom:8px}
+.dl-j{display:flex;align-items:center;justify-content:space-between;gap:8px;border:1px solid var(--line);background:var(--paper);padding:6px 9px}
+.dl-j span{font-size:.68rem;font-weight:600;line-height:1.3}
+.dl-j i{font-family:var(--mono);font-style:normal;font-size:.52rem;letter-spacing:.1em;color:var(--muted);flex:none;text-transform:uppercase}
+.dl-j.on{border-color:color-mix(in srgb,var(--pass) 40%,var(--line));background:var(--pass-bg)}
+.dl-j.on i{color:var(--pass);font-weight:700}
+.dl-total{flex:none;display:flex;justify-content:space-between;align-items:center;border:1px solid var(--line);border-top:none;background:var(--paper);padding:12px 22px}
+.dl-total .eq{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;color:var(--muted)}
+.dl-total .eq b{color:var(--gold-deep);font-size:1.05rem}
+
+/* ============ S10 PR FEED ============ */
+.pr-grid{flex:1;display:grid;grid-template-columns:5fr 7fr;gap:1px;background:var(--line);border:1px solid var(--line);min-height:0}
+.pr-left{background:var(--paper);padding:22px 24px;display:flex;flex-direction:column;justify-content:space-between}
+.pr-count{display:flex;align-items:baseline;gap:14px}
+.pr-count .n{font-family:var(--mono);font-size:3.2rem;font-weight:600;color:var(--gold-deep)}
+.pr-count .l{font-family:var(--mono);font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);line-height:1.7}
+.pr-feed{background:var(--panel);padding:16px 18px;display:flex;flex-direction:column;min-height:0}
+.pr-feed-hd{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);padding-bottom:9px;margin-bottom:10px;flex:none}
+.pr-items{flex:1;display:flex;flex-direction:column;gap:6px;overflow:hidden}
+.pr-it{border:1px solid var(--line);background:var(--paper);padding:7px 11px;display:flex;gap:12px;align-items:center}
+.pr-it .id{font-family:var(--mono);font-size:.6rem;font-weight:600;color:var(--gold-deep);flex:none;width:48px}
+.pr-it p{font-size:.72rem;font-weight:600;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pr-it .chip{flex:none}
+
+/* ============ S11 LANE ============ */
+.ln-pipe{display:grid;grid-template-columns:repeat(7,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.ln-pipe .xc{padding:13px 12px 12px;background:var(--panel)}
+.ln-pipe .stg{color:var(--gold);font-weight:600;font-size:.6rem;letter-spacing:.12em}
+.ln-pipe small{display:block;margin-top:4px;font-size:.63rem;color:var(--muted);line-height:1.4}
+.ln-pipe .xc.gate{background:var(--ink)}
+.ln-pipe .xc.gate .stg{color:#d4a843}
+.ln-pipe .xc.gate small{color:#b5ad9c}
+.ln-notes{flex:1;display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-top:none;min-height:0}
+.ln-notes .xc{background:var(--paper);display:flex;flex-direction:column;justify-content:center}
+
+/* ============ S12 ORACLE ============ */
+.or-grid{flex:1;display:grid;grid-template-columns:5fr 7fr;gap:1px;background:var(--line);border:1px solid var(--line);min-height:0}
+.or-left{background:var(--paper);padding:22px 24px;display:flex;flex-direction:column;justify-content:center;gap:16px}
+.or-matrix{background:var(--panel);padding:20px;display:flex;flex-direction:column;min-height:0}
+.or-ax{display:flex;font-family:var(--mono);font-size:.55rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.or-ax span{flex:1;text-align:center}
+.or-cells{flex:1;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);min-height:0}
+.or-c{background:var(--paper);padding:14px 16px;display:flex;flex-direction:column;justify-content:center;gap:6px;transition:background .3s ease,box-shadow .3s ease}
+.or-c .vv{font-family:var(--mono);font-size:.58rem;letter-spacing:.1em;color:var(--muted);text-transform:uppercase}
+.or-c h4{font-size:.88rem;font-weight:800;text-transform:uppercase}
+.or-c p{font-size:.68rem;color:var(--muted);line-height:1.45}
+.or-c.lit{background:var(--flash);box-shadow:inset 0 0 0 1px var(--gold)}
+.or-c.lit-ok{background:var(--pass-bg);box-shadow:inset 0 0 0 1px var(--pass)}
+.or-c.lit-crit{background:var(--crit-bg);box-shadow:inset 0 0 0 1px var(--crit)}
+.or-c.lit-crit h4{color:var(--crit);animation:blink .5s steps(2) 3}
+@keyframes blink{50%{opacity:.35}}
+
+/* ============ S13 IMPACT ============ */
+.im-grid{flex:1;display:grid;grid-template-columns:7fr 5fr;gap:1px;background:var(--line);border:1px solid var(--line);min-height:0}
+.im-chart{background:var(--panel);padding:24px 26px;display:flex;flex-direction:column;justify-content:center;gap:22px}
+.im-row{display:flex;align-items:center;gap:14px}
+.im-row .lb{width:150px;flex:none;font-family:var(--mono);font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);line-height:1.5}
+.im-row .tr{flex:1;height:26px;background:var(--paper);border:1px solid var(--line)}
+.im-row .fl{height:100%;transform-origin:left;transform:scaleX(0);background:var(--line)}
+.im-row .fl.g{background:var(--gold)}
+.active .im-row .fl{transition:transform 1.1s cubic-bezier(.22,.7,.2,1) .7s;transform:scaleX(1)}
+.im-row .vl{width:80px;flex:none;font-family:var(--mono);font-size:.8rem;font-weight:600;text-align:right}
+.im-big{display:flex;gap:30px;border-top:1px solid var(--line);padding-top:18px}
+.im-big .b{display:flex;align-items:baseline;gap:10px}
+.im-big .n{font-family:var(--mono);font-size:2rem;font-weight:600;color:var(--gold-deep)}
+.im-big .l{font-family:var(--mono);font-size:.55rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);line-height:1.6}
+.im-side{background:var(--paper);padding:22px 24px;display:flex;flex-direction:column;justify-content:center;gap:16px}
+
+/* ============ S14 HARDENING ============ */
+.ch-list{flex:1;display:flex;flex-direction:column;gap:1px;background:var(--line);border:1px solid var(--line);min-height:0}
+.ch-row{flex:1;background:var(--panel);display:grid;grid-template-columns:5fr 7fr;gap:24px;align-items:center;padding:0 22px;min-height:0}
+.ch-row .pr h4{font-size:.88rem;font-weight:700}
+.ch-row .pr p{font-size:.7rem;color:var(--muted);margin-top:2px}
+.ch-row .so{font-size:.78rem;color:var(--ink);border-left:2px solid var(--gold);padding-left:16px;line-height:1.5}
+.ch-row .so b{font-family:var(--mono);font-size:.64rem;font-weight:600;letter-spacing:.05em;color:var(--gold-deep);text-transform:none}
+
+/* ============ S16 SKILLS ============ */
+.sk-grid{flex:1;display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);min-height:0}
+.sk-col{background:var(--panel);padding:18px 18px;display:flex;flex-direction:column;gap:10px}
+.sk-col h4{font-size:.82rem;font-weight:800;text-transform:uppercase;letter-spacing:.02em;border-bottom:1px solid var(--line);padding-bottom:9px}
+.sk-col ul{list-style:none;display:flex;flex-direction:column;gap:7px}
+.sk-col li{font-size:.76rem;color:var(--ink);display:flex;gap:9px;line-height:1.4;align-items:baseline}
+.sk-col li b{color:var(--gold);font-weight:700;flex:none}
+.sk-col li small{color:var(--muted)}
+
+/* ============ S17 SPEC ============ */
+.sp-grid{flex:1;display:grid;grid-template-columns:7fr 5fr;gap:1px;background:var(--line);border:1px solid var(--line);min-height:0}
+.code-cell{background:var(--ink);padding:22px 26px;display:flex;flex-direction:column;justify-content:center}
+.code-cell .fn{font-family:var(--mono);font-size:.6rem;letter-spacing:.14em;color:#8a8172;text-transform:none;margin-bottom:14px;border-bottom:1px solid #35302a;padding-bottom:9px}
+.sp-line{font-family:var(--mono);font-size:.78rem;line-height:2.05;color:#e8e2d4;white-space:pre;opacity:0;transform:translateY(4px);transition:opacity .35s ease,transform .35s ease;letter-spacing:0;text-transform:none}
+.sp-line.in{opacity:1;transform:none}
+.sp-line .tick{color:#d4a843;font-weight:600}
+.sp-line .k{color:#d4a843}
+.sp-line .s{color:#9fbf8f}
+.sp-line .c{color:#8a8172;font-style:italic}
+.sp-line.sum{color:#9fbf8f;font-weight:600;border-top:1px solid #35302a;margin-top:8px;padding-top:10px}
+.sp-side{background:var(--paper);padding:22px 24px;display:flex;flex-direction:column;justify-content:center;gap:15px}
+
+/* ============ S18 THANKS ============ */
+#s18 .thx{flex:1;display:flex;flex-direction:column;justify-content:center}
+.thx-t{font-size:6.4rem;font-weight:800;line-height:.95;letter-spacing:-.03em;text-transform:uppercase}
+.thx-t .gd{color:var(--gold)}
+.thx-meta{margin-top:26px;display:flex;flex-direction:column;gap:8px}
+.thx-meta .row{display:flex;gap:14px;align-items:baseline}
+.thx-meta .k{font-family:var(--mono);font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);width:90px;flex:none}
+.thx-meta .v{font-size:.95rem;font-weight:600}
+#s18 .road3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);flex:none}
+
+/* ============ CHROME ============ */
+.counter{display:none}
+
+/* ============ REDUCED MOTION ============ */
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  [data-r]{opacity:1;transform:none}
+  .tl-bar,.ru-bar .fl,.im-row .fl{transform:scaleX(1)!important}
+  .clip>span{transform:none!important}
+  .sp-line{opacity:1!important;transform:none!important}
+  .dl-j{border-color:color-mix(in srgb,var(--pass) 40%,var(--line))}
+}
+
+/* ============ PRINT ============ */
+@page{size:338.7mm 190.5mm;margin:0}
+@media print{
+  body{background:none;overflow:visible}
+  .stage{position:static;transform:none!important;box-shadow:none;border:none;width:1280px;height:auto;overflow:visible}
+  .progress,.counter{display:none}
+  .rail{position:fixed}
+  .slide{position:relative;inset:auto;opacity:1!important;visibility:visible!important;
+    width:1280px;height:720px;page-break-after:always;break-after:page;border-bottom:1px solid var(--line)}
+  [data-r]{opacity:1!important;transform:none!important}
+  .tl-bar,.ru-bar .fl,.im-row .fl{transform:scaleX(1)!important}
+  .clip>span{transform:none!important}
+  .sp-line{opacity:1!important;transform:none!important}
+  .tdot{display:none}
+}
+</style>
+</head>
+<body>
+<div class="stage" id="stage">
+  <div class="progress" id="prog"></div>
+  <div class="counter mono"><b id="cur">01</b> / <span id="tot">18</span></div>
+
+  <!-- rail -->
+  <aside class="rail">
+    <div class="rail-mark">
+      <svg width="18" height="18" viewBox="0 0 18 18">
+        <rect x="1" y="1" width="16" height="16" fill="none" stroke="#8f690a" stroke-width="1.6"/>
+        <rect x="6" y="6" width="6" height="6" fill="#b8860b"/>
+      </svg>
+    </div>
+    <div class="rail-word">ABHISHEK&nbsp;S&nbsp;BIJU<b>.</b></div>
+    <div class="rail-num" id="railnum">01</div>
+  </aside>
+
+  <!-- ============ 1 · COVER ============ -->
+  <section class="slide" id="s1">
+    <div class="cover-top">
+      <span class="mono meta">WORK SUMMARY · RÉSUMÉ DECK</span>
+      <span class="mono dim">B.E. COMPUTER SCIENCE · BITS PILANI, GOA CAMPUS</span>
+    </div>
+    <div class="cover-mid">
+      <h1 class="hero-t">
+        <span class="clip"><span>ABHISHEK</span></span>
+        <span class="clip d2"><span><span class="fill">S&nbsp;BIJU</span><span class="gd">.</span></span></span>
+      </h1>
+      <p class="hero-sub" data-r>Software Engineer Intern @ <strong>FourKites</strong> — SDET / test automation on the Dynamic Yard Management System. I ship test infrastructure and tooling, <strong>then prove it works</strong>.</p>
+      <div class="cover-status" data-r>
+        <span class="st"><i class="dot live"></i><span class="mono" style="color:var(--pass)">ALL 20 PRS MERGED</span></span>
+        <span class="mono" id="tick">git · 89 commits · ≈+8.5K lines · develop</span>
+      </div>
+      <div class="cover-auth" data-r>
+        <div>
+          <div class="nm">Abhishek Smitha Biju</div>
+          <div class="mono dim rl">SDET / TEST AUTOMATION · DYNAMIC YARD MANAGEMENT · MAY–JUL 2026</div>
+        </div>
+        <span class="mono hint">← → NAVIGATE &nbsp;·&nbsp; F FULLSCREEN</span>
+      </div>
+    </div>
+    <footer class="sfoot"><span class="mono dim">ABHISHEK S BIJU — WORK SUMMARY 2026</span><span class="mono fnum"></span></footer>
+  </section>
+
+  <!-- ============ 2 · AT A GLANCE ============ -->
+  <section class="slide" id="s2">
+    <header class="shead"><span class="mono meta">02 / AT A GLANCE</span><span class="mono dim">SEVEN AND A HALF WEEKS, GIT-VERIFIED</span></header>
+    <div class="sbody">
+      <div data-r><h2>The whole story in six numbers</h2></div>
+      <div class="gl-ident" style="margin-top:16px" data-r>
+        <div class="xc sweep"><span class="mono meta tag">ROLE</span><h4>Software Engineer Intern · FourKites</h4><p>Drove the Virtuoso → Playwright-BDD test migration for the Dynamic Yard Management System. Chennai, on-site.</p></div>
+        <div class="xc sweep"><span class="mono meta tag">SCOPE</span><h4>The full arc, owned end-to-end</h4><p>Approved HLD → deterministic converter → 39 journeys delivered → the /e2e-virtuoso validation lane that runs it all.</p></div>
+        <div class="xc sweep"><span class="mono meta tag">BASE</span><h4>B.E. CS · BITS Pilani, Goa</h4><p>Third year, Computer Science. This internship is Practice School-I — delivered like a full engineering rotation.</p></div>
+      </div>
+      <div class="gl-stats">
+        <div class="gl-stat" data-r><span class="n" id="g1">0</span><span class="l">COMMITS AUTHORED<br>MAY 25 → JUL 15</span></div>
+        <div class="gl-stat" data-r><span class="n"><span id="g2">0</span><small> / 20</small></span><span class="l">PULL REQUESTS —<br>ALL MERGED TO DEVELOP</span></div>
+        <div class="gl-stat" data-r><span class="n">+<span id="g3">0</span>K</span><span class="l">LINES ADDED<br>ACROSS MERGED PRS</span></div>
+        <div class="gl-stat" data-r><span class="n"><span id="g4">0</span><small>+16</small></span><span class="l">JOURNEYS MIGRATED<br>+ SUITES HARDENED GREEN</span></div>
+        <div class="gl-stat" data-r><span class="n"><span id="g5">0</span>%</span><span class="l">CHECKPOINT RECURRENCE<br>MEASURED — ~13× DEDUP</span></div>
+        <div class="gl-stat" data-r><span class="n">2.7<small>×</small></span><span class="l">FASTER PER-JOURNEY<br>TURNAROUND (SELF-MEASURED)</span></div>
+      </div>
+    </div>
+    <footer class="sfoot"><span class="mono dim">ABHISHEK S BIJU — WORK SUMMARY 2026</span><span class="mono fnum"></span></footer>
+  </section>
+
+  <!-- ============ 3 · CONTEXT ============ -->
+  <section class="slide" id="s3">
+    <header class="shead"><span class="mono meta">03 / THE MISSION</span><span class="mono dim">FOURKITES · DYNAMIC YARD MANAGEMENT</span></header>
+    <div class="sbody">
+      <div data-r><h2>Get an E2E suite off a<br>recorded-test vendor</h2></div>
+      <div class="prob-grid" style="margin-top:16px">
+        <div class="prob-left" data-r>
+          <p class="lede">FourKites' yard-management platform (React/Redux) guarded its releases with <strong>VirtuosoQA</strong> — licensed, recorded browser tests. The mandate: migrate those journeys into the team's in-house <strong>Playwright + playwright-bdd</strong> framework (&ldquo;Specwright&rdquo;) without losing what the recordings actually verify.</p>
+          <div class="prob-meta">
+            <span><span>PLATFORM</span><b>YMS-UI · REACT / REDUX</b></span>
+            <span><span>SOURCE SUITE</span><b>VIRTUOSOQA RECORDED JOURNEYS</b></span>
+            <span><span>TARGET</span><b>PLAYWRIGHT-BDD (GHERKIN) ON QAT</b></span>
+            <span><span>MY LANE</span><b>DESIGN → CONVERTER → VOLUME → TOOLING</b></span>
+          </div>
+        </div>
+        <div class="prob-pains">
+          <div class="xc panel sweep" data-r><span class="mono meta tag">RISK 01</span><h4>200–527 steps per journey</h4><p>Real exported journeys are huge — hand-porting them is slow and error-prone.</p></div>
+          <div class="xc panel sweep" data-r><span class="mono meta tag">RISK 02</span><h4>False greens at volume</h4><p>Bulk migration's classic failure: tests that pass while asserting nothing.</p></div>
+          <div class="xc panel sweep" data-r><span class="mono meta tag">RISK 03</span><h4>~4 hours per journey</h4><p>The manual convert-run-heal-PR loop capped throughput at ~2 journeys a day.</p></div>
+          <div class="xc panel sweep" data-r><span class="mono meta tag">RISK 04</span><h4>Undocumented contracts</h4><p>The export format and step vocabulary had to be reverse-engineered before anything could be trusted.</p></div>
+        </div>
+      </div>
+    </div>
+    <footer class="sfoot"><span class="mono dim">ABHISHEK S BIJU — WORK SUMMARY 2026</span><span class="mono fnum"></span></footer>
+  </section>
+
+  <!-- ============ 4 · TIMELINE ============ -->
+  <section class="slide" id="s4">
+    <header class="shead"><span class="mono meta">04 / TIMELINE</span><span class="mono dim">MAY 25 → JUL 15 · THREE PHASES</span></header>
+    <div class="sbody">
+      <div data-r><h2>Two weeks of design<br>before the first commit</h2>
+      <p class="lede">Deliberately design-first: the git record starts <strong>June 8</strong> — everything before that is HLD, LLD, spikes and validation experiments that made the build phase fast.</p></div>
+      <div class="tl" style="margin-top:14px">
+        <div class="tl-row" data-r>
+          <div class="tl-lb"><h4>Setup &amp; Design</h4><small>MAY 25 → JUN 8 · ZERO COMMITS</small></div>
+          <div class="tl-track"><div class="tl-bar" style="left:0%;width:27%"></div></div>
+          <div class="tl-note"><b>HLD published &amp; approved</b> · LLD drafted · schema spike · reuse thesis measured</div>
+        </div>
+        <div class="tl-row" data-r>
+          <div class="tl-lb"><h4>Converter &amp; First Migrations</h4><small>JUN 8 → JUN 25 · FOUNDATIONS</small></div>
+          <div class="tl-track"><div class="tl-bar" style="left:27%;width:33%;transition-delay:.35s"></div></div>
+          <div class="tl-note"><b>Deterministic converter</b> proven on real 291/527-step exports · first journeys healed green</div>
+        </div>
+        <div class="tl-row" data-r>
+          <div class="tl-lb"><h4>Volume + Hardening + Tooling</h4><small>JUN 25 → JUL 15 · DELIVERY SPRINT</small></div>
+          <div class="tl-track"><div class="tl-bar" style="left:60%;width:40%;transition-delay:.7s"></div></div>
+          <div class="tl-note"><b>23 journeys shipped</b> · 16 suites hardened · <b>/e2e-virtuoso</b> lane built</div>
+        </div>
+      </div>
+      <div class="tl-axis" data-r>
+        <span>MAY 25</span><span>JUN 8</span><span>JUN 22</span><span>JUL 1</span><span>JUL 15</span>
+      </div>
+    </div>
+    <footer class="sfoot"><span class="mono dim">ABHISHEK S BIJU — WORK SUMMARY 2026</span><span class="mono fnum"></span></footer>
+  </section>
+
+  <!-- ============ 5 · DESIGN FIRST ============ -->
+  <section class="slide" id="s5">
+    <header class="shead"><span class="mono meta">05 / DESIGN</span><span class="mono dim">HLD · LLD · SPIKES · EVIDENCE</span></header>
+    <div class="sbody">
+      <div data-r><h2>Validate, then claim</h2></div>
+      <div class="dg-grid" style="margin-top:16px">
+        <div class="dg-cells">
+          <div class="xc panel sweep" data-r><span class="mono meta tag">HLD · APPROVED</span><h4>Authored &amp; published the HLD</h4><p>Published to Confluence, status <strong style="color:var(--pass)">Design Approved</strong>. v2.1 &ldquo;Seed-First&rdquo; defines a 14-phase pipeline aligned to the team lead's mandatory seed + validation-gate mandate.</p></div>
+          <div class="xc panel sweep" data-r><span class="mono meta tag">LLD · DRAFTED</span><h4>Drafted the LLD</h4><p>Full low-level design with explainer and flowchart — honest status: drafted, not published like the HLD.</p></div>
+          <div class="xc panel sweep" data-r><span class="mono meta tag">SPIKE · COMPLETED</span><h4>Schema-locking spike</h4><p>Locked the undocumented export schema against real exports, and reverse-engineered the format contract against a known-good oracle journey.</p></div>
+          <div class="xc panel sweep" data-r><span class="mono meta tag">EVIDENCE LEDGER</span><h4>VERIFIED vs ASSERTED</h4><p>The HLD ships its own evidence ledger separating what was executed from what is claimed — and flags a meeting-vs-ticket mismatch I caught.</p></div>
+        </div>
+        <div class="dg-quote" data-r>
+          <span class="src">HLD v2 — CHANGE LOG, VERBATIM</span>
+          <blockquote>&ldquo;v1 was a paper design; <i>v2 is grounded in actually parsing six real YMS exports</i> + 3 agent executions.&rdquo;</blockquote>
+          <p style="font-size:.78rem;line-height:1.55;color:#b5ad9c">Every design claim in the doc traces to a real export, a real run, or is explicitly marked unproven. The same discipline runs through everything after it.</p>
+        </div>
+      </div>
+    </div>
+    <footer class="sfoot"><span class="mono dim">ABHISHEK S BIJU — WORK SUMMARY 2026</span><span class="mono fnum"></span></footer>
+  </section>
+
+  <!-- ============ 6 · ADOPTION ============ -->
+  <section class="slide" id="s6">
+    <header class="shead"><span class="mono meta">06 / INFLUENCE</span><span class="mono dim">THE DESIGN OTHERS BUILT ON</span></header>
+    <div class="sbody">
+      <div data-r><h2>My HLD became the team's build spec</h2></div>
+      <div class="ad-flow" data-r>
+        <div class="ad-step"><span class="mono meta">STEP 01</span><h4>I authored the HLD</h4><p>Approved design for the migration tooling — converter, agent, validation gates.</p></div>
+        <div class="ad-arrow">→</div>
+        <div class="ad-step"><span class="mono meta">STEP 02</span><h4>A senior engineer implemented it</h4><p>The base migrator agent + <b style="font-family:var(--mono);font-size:.68rem;text-transform:none">/e2e-migrate</b> skill were built and completed <em>&ldquo;per the HLD&rdquo;</em> — his words on the ticket.</p></div>
+        <div class="ad-arrow">→</div>
+        <div class="ad-step"><span class="mono meta">STEP 03</span><h4>My lane orchestrates it</h4><p>Those exact components are what my <b style="font-family:var(--mono);font-size:.68rem;text-transform:none">/e2e-virtuoso</b> validation lane conducts end-to-end.</p></div>
+      </div>
+      <div class="ad-notes">
+        <div class="xc sweep" data-r><span class="mono meta tag">EPIC OWNERSHIP</span><h4>Original assignee of the migration epic</h4><p>As an intern, I was the epic's first owner. When the journey backlog outgrew my internship window it was handed to a permanent engineer — I kept its two goal features and kept shipping against them.</p></div>
+        <div class="xc sweep" data-r><span class="mono meta tag">HONEST BOUNDARY</span><h4>Influence, claimed precisely</h4><p>I <strong>designed</strong> the migrator and the approach; a senior engineer <strong>built</strong> that ticket. The v2.1 design reworks the team lead's own seed script — a lead-guided collaboration, credited as one.</p></div>
+      </div>
+    </div>
+    <footer class="sfoot"><span class="mono dim">ABHISHEK S BIJU — WORK SUMMARY 2026</span><span class="mono fnum"></span></footer>
+  </section>
+
+  <!-- ============ 7 · CONVERTER ============ -->
+  <section class="slide" id="s7">
+    <header class="shead"><span class="mono meta">07 / CONVERTER</span><span class="mono dim">DETERMINISTIC VIRTUOSO → PLAYWRIGHT</span></header>
+    <div class="sbody">
+      <div data-r><h2>The mechanical work runs in code</h2>
+      <p class="lede">A deterministic <strong>Node/ESM converter</strong> turns a raw Virtuoso JSON export into a runnable Playwright seed — fast, free, reproducible. Follow one export through:</p></div>
+      <div class="pipe-wrap">
+        <div class="pipe" data-r>
+          <div class="xc"><span class="mono stg">01 EXPORT</span><small>Raw VirtuosoQA journey JSON — up to 527 recorded steps</small></div>
+          <div class="xc"><span class="mono stg">02 PARSE</span><small>Deterministic parse locks the undocumented schema</small></div>
+          <div class="xc"><span class="mono stg">03 RESOLVE</span><small>Selector strategy — weak selectors flagged, never silently emitted</small></div>
+          <div class="xc"><span class="mono stg">04 SEED</span><small>Clean runnable Playwright seed, <b>node --check</b> green</small></div>
+          <div class="xc"><span class="mono stg">05 BDD</span><small>Behavior-only Gherkin .feature + co-located steps</small></div>
+        </div>
+        <div class="track" data-r><div class="tdot"></div></div>
+        <div class="cv-stats" data-r>
+          <div class="cv-stat"><span class="n">291→527</span><span class="l">STEP EXPORTS<br>PROVEN CLEAN</span></div>
+          <div class="cv-stat"><span class="n">0</span><span class="l">RAW XPATH<br>EMITTED</span></div>
+          <div class="cv-stat"><span class="n">0</span><span class="l">UNKNOWN<br>ACTIONS</span></div>
+          <div class="cv-stat"><span class="n">0</span><span class="l">SILENT WEAK<br>SELECTORS</span></div>
+          <div class="cv-stat"><span class="n">4/4</span><span class="l">REAL EXPORTS<br>STRESS-TESTED</span></div>
+        </div>
+      </div>
+    </div>
+    <footer class="sfoot"><span class="mono dim">ABHISHEK S BIJU — WORK SUMMARY 2026</span><span class="mono fnum"></span></footer>
+  </section>
+
+  <!-- ============ 8 · REUSE ============ -->
+  <section class="slide" id="s8">
+    <header class="shead"><span class="mono meta">08 / EVIDENCE</span><span class="mono dim">THE REUSE THESIS, MEASURED</span></header>
+    <div class="sbody">
+      <div data-r><h2>82% of checkpoints recur —<br>so share the steps</h2></div>
+      <div class="ru-grid" style="margin-top:16px">
+        <div class="ru-chart" data-r>
+          <span class="mono dim" style="font-size:.58rem">CROSS-JOURNEY ANALYSIS · 111 CHECKPOINTS</span>
+          <div class="ru-bar">
+            <div class="hd"><span>RECURRING ACROSS JOURNEYS</span><b>82%</b></div>
+            <div class="tr"><div class="fl g" style="width:82%"></div></div>
+          </div>
+          <div class="ru-bar">
+            <div class="hd"><span>UNIQUE TO ONE JOURNEY</span><b>18%</b></div>
+            <div class="tr"><div class="fl" style="width:18%"></div></div>
+          </div>
+          <div class="ru-big">
+            <span class="n">~<span id="ru13">1</span>×</span>
+            <span class="l">DEDUPLICATION PAYOFF FROM<br>A SHARED-STEP LIBRARY</span>
+          </div>
+        </div>
+        <div class="ru-side">
+          <div class="cn" data-r><h4>Measured, not assumed</h4><p>Before committing the team to shared steps, I counted checkpoint recurrence across real journeys. The architecture decision rests on data.</p></div>
+          <div class="cn" data-r><h4>Why it matters</h4><p>Every recurring checkpoint becomes one reusable step definition instead of thirteen copies — the difference between a suite that scales and one that rots.</p></div>
+          <div class="cn" data-r><h4>Same pattern everywhere</h4><p>Format contract vs a known-good oracle, reuse thesis vs real data, greens vs the original recording — <strong>verify, then claim</strong>.</p></div>
+        </div>
+      </div>
+    </div>
+    <footer class="sfoot"><span class="mono dim">ABHISHEK S BIJU — WORK SUMMARY 2026</span><span class="mono fnum"></span></footer>
+  </section>
+
+  <!-- ============ 9 · DELIVERY MAP ============ -->
+  <section class="slide" id="s9">
+    <header class="shead"><span class="mono meta">09 / DELIVERY</span><span class="mono dim">EVERY JOURNEY HEALED GREEN ON LIVE QAT</span></header>
+    <div class="sbody">
+      <div data-r><h2>23 journeys migrated, 16 hardened</h2></div>
+      <div class="dl-grid" style="margin-top:14px" data-r>
+        <div class="dl-col">
+          <h4>Create · Update · Freight</h4>
+          <div class="dl-j"><span>Create-Inbound</span><i>…</i></div>
+          <div class="dl-j"><span>Create-Outbound</span><i>…</i></div>
+          <div class="dl-j"><span>Update-Inbound / Outbound</span><i>…</i></div>
+          <div class="dl-j"><span>Freight loads In / Out</span><i>…</i></div>
+          <div class="dl-j"><span>View-Trailer</span><i>…</i></div>
+        </div>
+        <div class="dl-col">
+          <h4>Shipments Table Ops</h4>
+          <div class="dl-j"><span>Filter by details <small style="color:var(--muted)">(heaviest)</small></span><i>…</i></div>
+          <div class="dl-j"><span>Filter by date</span><i>…</i></div>
+          <div class="dl-j"><span>Quick filters</span><i>…</i></div>
+          <div class="dl-j"><span>Sort columns</span><i>…</i></div>
+          <div class="dl-j"><span>Pagination</span><i>…</i></div>
+        </div>
+        <div class="dl-col">
+          <h4>Gate · Check-in · Check-out</h4>
+          <div class="dl-j"><span>Select-Gate autopopulate</span><i>…</i></div>
+          <div class="dl-j"><span>Check-out prepopulate</span><i>…</i></div>
+          <div class="dl-j"><span>Check-in validate-prepop</span><i>…</i></div>
+          <div class="dl-j"><span>Inbound ↔ Outbound swap</span><i>…</i></div>
+          <div class="dl-j"><span>Trailer-modal table ops ×4</span><i>…</i></div>
+        </div>
+        <div class="dl-col">
+          <h4>Ad-hoc Hardening</h4>
+          <div class="dl-j"><span>16 flaky check-in/out suites → green</span><i>…</i></div>
+          <div class="dl-j"><span>Live / Normal ad-hoc flows ×2</span><i>…</i></div>
+          <div class="dl-j"><span>Shared-step locator bug fixed</span><i>…</i></div>
+          <div class="dl-j"><span>App defect found — filed, not masked</span><i>…</i></div>
+          <div class="dl-j"><span>Reusable test-data helper</span><i>…</i></div>
+        </div>
+      </div>
+      <div class="dl-total" data-r>
+        <span class="eq">23 AUTHORED (~27 SCENARIOS) &nbsp;+&nbsp; 16 HARDENED &nbsp;=&nbsp; <b>~39 JOURNEYS DELIVERED</b></span>
+        <span class="chip ok" id="dlchip">HEALING ON QAT…</span>
+      </div>
+    </div>
+    <footer class="sfoot"><span class="mono dim">ABHISHEK S BIJU — WORK SUMMARY 2026</span><span class="mono fnum"></span></footer>
+  </section>
+
+  <!-- ============ 10 · PR LEDGER ============ -->
+  <section class="slide" id="s10">
+    <header class="shead"><span class="mono meta">10 / SHIPPED</span><span class="mono dim">PULL-REQUEST LEDGER · CLOUDQWEST/YMS-UI</span></header>
+    <div class="sbody">
+      <div data-r><h2>Twenty PRs. Twenty merges.</h2></div>
+      <div class="pr-grid" style="margin-top:16px">
+        <div class="pr-left" data-r>
+          <div>
+            <div class="pr-count"><span class="n"><span id="prn">0</span>/20</span><span class="l">MERGED TO<br>DEVELOP</span></div>
+            <p class="lede" style="margin-top:14px;font-size:.85rem">Every pull request I opened in the window was reviewed and merged — <strong>89 commits, ≈+8.5K lines</strong> — each one carrying per-file green proof from a live QAT run.</p>
+          </div>
+          <div class="prob-meta">
+            <span><span>REVIEW BAR</span><b>ADVERSARIAL REVIEW BEFORE SIGN-OFF</b></span>
+            <span><span>PROOF STANDARD</span><b>NO FALSE GREENS · PER-FILE EVIDENCE</b></span>
+            <span><span>BIGGEST PR</span><b>4 JOURNEYS · +1,896 LINES</b></span>
+          </div>
+        </div>
+        <div class="pr-feed">
+          <div class="pr-feed-hd"><span class="mono meta">MERGE FEED</span><span class="mono dim" id="prtick">develop ← …</span></div>
+          <div class="pr-items" id="pritems"></div>
+        </div>
+      </div>
+    </div>
+    <footer class="sfoot"><span class="mono dim">ABHISHEK S BIJU — WORK SUMMARY 2026</span><span class="mono fnum"></span></footer>
+  </section>
+
+  <!-- ============ 11 · THE LANE ============ -->
+  <section class="slide" id="s11">
+    <header class="shead"><span class="mono meta">11 / CAPSTONE</span><span class="mono dim">/E2E-VIRTUOSO — THE VALIDATION LANE</span></header>
+    <div class="sbody">
+      <div data-r><h2>One command, journey → reviewed PR</h2>
+      <p class="lede">Not one more migrated test — the <strong>meta-tool that runs and validates every migration</strong>. Designed and built under my direction (heavily AI-assisted), it drives the whole chain to the lead's review with two human touchpoints: one SSO login and the final merge.</p></div>
+      <div class="ln-pipe" style="margin-top:14px" data-r>
+        <div class="xc"><span class="mono stg">0 · INTAKE</span><small>Resolve PR → ticket → branch → QAT env</small></div>
+        <div class="xc"><span class="mono stg">0.5 · PRE-FLIGHT</span><small>Schema · QAT reachable · auth fresh — fail before run-minutes</small></div>
+        <div class="xc"><span class="mono stg">1 · BUILD</span><small>4 deterministic build-time gates, all free</small></div>
+        <div class="xc"><span class="mono stg">2 · RUN + HEAL</span><small>Headless QAT + heal loop, video retained</small></div>
+        <div class="xc"><span class="mono stg">3 · VIRTUOSO</span><small>Read-only fetch of the original recording's results</small></div>
+        <div class="xc gate"><span class="mono stg">■ 4 · ORACLE</span><small>Reconcile both engines — hard-block false greens</small></div>
+        <div class="xc"><span class="mono stg">5–6 · PR + REVIEW</span><small>Prepare PR, post verdict + coverage matrix to PR &amp; Jira</small></div>
+      </div>
+      <div class="ln-notes">
+        <div class="xc sweep" data-r><span class="mono meta tag">ORCHESTRATION</span><h4>Conducts five agents &amp; skills</h4><p>It sequences the team's components and never restates their logic — clean boundaries keep every piece independently maintainable.</p></div>
+        <div class="xc sweep" data-r><span class="mono meta tag">COST-AWARE</span><h4>Free gates guard paid minutes</h4><p>Four build-time gates run before the ~10-minute QAT run; the Virtuoso read is a single checkpoint-level tally, not hundreds of screenshots.</p></div>
+        <div class="xc sweep" data-r><span class="mono meta tag">SCAR TISSUE</span><h4>Carries its own failure catalog</h4><p>Branch guards, auth-freshness fixes, env-override traps — hard-won failures are encoded so they cannot recur.</p></div>
+      </div>
+    </div>
+    <footer class="sfoot"><span class="mono dim">ABHISHEK S BIJU — WORK SUMMARY 2026</span><span class="mono fnum"></span></footer>
+  </section>
+
+  <!-- ============ 12 · ORACLE ============ -->
+  <section class="slide" id="s12">
+    <header class="shead"><span class="mono meta">12 / THE ORACLE</span><span class="mono dim">DUAL-ENGINE RECONCILIATION</span></header>
+    <div class="sbody">
+      <div data-r><h2>A green that shouldn't be green<br>cannot ship</h2></div>
+      <div class="or-grid" style="margin-top:16px">
+        <div class="or-left">
+          <div class="cn" data-r><h4>The failure mode it kills</h4><p>Migrating tests at volume produces greens that assert nothing. The oracle's entire job is to catch them — <strong>by machinery, not by hope</strong>.</p></div>
+          <div class="cn" data-r><h4>How it works</h4><p>Every migrated journey is run twice: the new BDD test on QAT, and the original Virtuoso recording. The verdicts are reconciled checkpoint by checkpoint.</p></div>
+          <div class="cn" data-r><h4>Proof it's real</h4><p>The &ldquo;both fail&rdquo; branch found a genuine app defect — filed as a defect ticket instead of papering over it.</p></div>
+        </div>
+        <div class="or-matrix" data-r>
+          <div class="or-ax"><span>VIRTUOSO SAYS ✅</span><span>VIRTUOSO SAYS ❌</span></div>
+          <div class="or-cells">
+            <div class="or-c" id="oc1"><span class="vv">BDD ✅ · VIRTUOSO ✅</span><h4 style="color:var(--pass)">Proceed</h4><p>Both engines agree the behavior passes — the migration is faithful. Ship it.</p></div>
+            <div class="or-c" id="oc2"><span class="vv">BDD ✅ · VIRTUOSO ❌</span><h4>🚨 False green — hard-block</h4><p>The migrated test passes where the recording fails. The lane refuses to let it merge.</p></div>
+            <div class="or-c" id="oc3"><span class="vv">BDD ❌ · VIRTUOSO ✅</span><h4>Heal &amp; re-run</h4><p>The migration is wrong, not the app — back into the heal loop it goes.</p></div>
+            <div class="or-c" id="oc4"><span class="vv">BDD ❌ · VIRTUOSO ❌</span><h4>Real app defect — park</h4><p>Both engines fail: the app is broken. Park the journey, remove the files, file a defect.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="sfoot"><span class="mono dim">ABHISHEK S BIJU — WORK SUMMARY 2026</span><span class="mono fnum"></span></footer>
+  </section>
+
+  <!-- ============ 13 · IMPACT ============ -->
+  <section class="slide" id="s13">
+    <header class="shead"><span class="mono meta">13 / IMPACT</span><span class="mono dim">SELF-MEASURED ON ~250-STEP JOURNEYS</span></header>
+    <div class="sbody">
+      <div data-r><h2>Four hours became ninety minutes</h2></div>
+      <div class="im-grid" style="margin-top:16px">
+        <div class="im-chart" data-r>
+          <span class="mono dim" style="font-size:.58rem">PER-JOURNEY TURNAROUND · EXPORT → REVIEWED PR</span>
+          <div class="im-row">
+            <span class="lb">MANUAL LOOP<br>BEFORE</span>
+            <div class="tr"><div class="fl" style="width:100%"></div></div>
+            <span class="vl">~4 h</span>
+          </div>
+          <div class="im-row">
+            <span class="lb">/E2E-VIRTUOSO<br>AFTER</span>
+            <div class="tr"><div class="fl g" style="width:37%;transition-delay:1.1s"></div></div>
+            <span class="vl">~90 min</span>
+          </div>
+          <div class="im-big">
+            <div class="b"><span class="n">2.7×</span><span class="l">FASTER<br>PER JOURNEY</span></div>
+            <div class="b"><span class="n">2→5</span><span class="l">JOURNEYS<br>PER DAY</span></div>
+            <div class="b"><span class="n">CUT</span><span class="l">AI-TOKEN COST<br>PER JOURNEY</span></div>
+          </div>
+        </div>
+        <div class="im-side">
+          <div class="cn" data-r><h4>The lever was my idea</h4><p>Move the deterministic parse of a 250-step export into a <strong>Node/JS converter</strong> instead of the LLM. Mechanical work runs in code — fast, free, reproducible.</p></div>
+          <div class="cn" data-r><h4>Tokens only for judgment</h4><p>AI spend goes exclusively to genuinely ambiguous decisions — selector and vocabulary resolution — cutting both wall-clock and token cost.</p></div>
+          <div class="cn" data-r><h4>Claimed honestly</h4><p>These are my own measurements on real YMS journeys, not an audited benchmark — and I say so.</p></div>
+        </div>
+      </div>
+    </div>
+    <footer class="sfoot"><span class="mono dim">ABHISHEK S BIJU — WORK SUMMARY 2026</span><span class="mono fnum"></span></footer>
+  </section>
+
+  <!-- ============ 14 · HARDENING ============ -->
+  <section class="slide" id="s14">
+    <header class="shead"><span class="mono meta">14 / CRAFT</span><span class="mono dim">SHARED INFRASTRUCTURE &amp; HONEST TOOLING</span></header>
+    <div class="sbody">
+      <div data-r><h2>Leave the suite better than you found it</h2></div>
+      <div class="ch-list" style="margin-top:16px">
+        <div class="ch-row" data-r>
+          <div class="pr"><h4>Strict-mode locator bug in a shared step</h4><p>An unscoped role lookup broke every consumer under Playwright strict mode.</p></div>
+          <div class="so"><b>FIX</b> — scoped the locator to the searched delivery row + <b>.first()</b>; every check-in journey downstream got stabler for free.</div>
+        </div>
+        <div class="ch-row" data-r>
+          <div class="pr"><h4>Copy-pasted test-data setup</h4><p>Each journey re-implemented its own cross-phase data bootstrapping.</p></div>
+          <div class="so"><b>EXTRACT</b> — one reusable <b>loadOrGenerateFeatureData(...)</b> helper; plus a <b>parseCarrier()</b> regex for the &ldquo;Name (SCAC)&rdquo; contract.</div>
+        </div>
+        <div class="ch-row" data-r>
+          <div class="pr"><h4>A per-run config edit ritual</h4><p>Every local run began with hand-editing the committed env file — and hoping you remembered to revert.</p></div>
+          <div class="so"><b>KILL IT</b> — a gitignored <b>.env.testing.local</b> override; the recurring sed dance is gone for the whole team.</div>
+        </div>
+        <div class="ch-row" data-r>
+          <div class="pr"><h4>A filter modal rendering zero options</h4><p>Mid-migration, the app itself misbehaved — the easy path was to loosen the test.</p></div>
+          <div class="so"><b>FILE IT</b> — logged a genuine app defect instead of masking it. The oracle's &ldquo;both fail → park &amp; file&rdquo; branch, used for real.</div>
+        </div>
+        <div class="ch-row" data-r>
+          <div class="pr"><h4>Tooling that could overclaim</h4><p>A dry run that skips reconciliation could quietly look like a proven green.</p></div>
+          <div class="so"><b>REFUSE</b> — the lane prints <b>&ldquo;RECONCILE NOT RUN — green unproven&rdquo;</b> and distinguishes <em>executed</em> from <em>proven</em>. The tool is as calibrated as the docs.</div>
+        </div>
+      </div>
+    </div>
+    <footer class="sfoot"><span class="mono dim">ABHISHEK S BIJU — WORK SUMMARY 2026</span><span class="mono fnum"></span></footer>
+  </section>
+
+  <!-- ============ 15 · THE TOOL, LIVE ============ -->
+  <section class="slide" id="s15">
+    <header class="shead"><span class="mono meta">15 / THE TOOL</span><span class="mono dim">/E2E-VIRTUOSO, AS THE TEAM RUNS IT</span></header>
+    <div class="sbody">
+      <div data-r><h2>One command, honestly reported</h2></div>
+      <div class="sp-grid" style="margin-top:16px">
+        <div class="code-cell" data-r>
+          <div class="fn">&gt; /e2e-virtuoso &lt;pr-url&gt; &lt;path-to-journey.json&gt; [--compile-only|--dry-run]</div>
+          <div class="sp-line"><span class="tick">✓</span> pre-flight   <span class="c">schema · QAT reachable · auth fresh — fail before run-minutes</span></div>
+          <div class="sp-line"><span class="tick">✓</span> build gates  <span class="c">4/4 · no TODO stubs · sequence aligned 1:1 with the recording</span></div>
+          <div class="sp-line"><span class="tick">✓</span> run + heal   <span class="c">headless on live QAT · video retained</span></div>
+          <div class="sp-line"><span class="tick">✓</span> virtuoso     <span class="c">checkpoint results fetched — read-only, one human SSO</span></div>
+          <div class="sp-line"><span class="tick">✓</span> reconcile    <span class="c">oracle: both engines green — proceed</span></div>
+          <div class="sp-line"><span class="tick">→</span> review record posted <span class="c">verdict + coverage matrix + video → PR &amp; Jira</span></div>
+          <div class="sp-line sum" style="color:#d4a843">--dry-run refuses to overclaim: "RECONCILE NOT RUN — green unproven"</div>
+        </div>
+        <div class="sp-side">
+          <div class="cn" data-r><h4>Ships with its own doctrine</h4><p>A 347-line rulebook with a hard-won failure catalog, a 164-line reconciler agent, a 281-line skill — the capability survives beyond one person's head.</p></div>
+          <div class="cn" data-r><h4>Self-critiqued</h4><p>Ranked 13 improvements by impact ÷ effort, shipped all 8 HIGH items, and documented what I deliberately rejected — with the reasons why.</p></div>
+          <div class="cn" data-r><h4>Claimed precisely</h4><p>9 commits, ≈929 insertions across 9 files on the lane branch — designed and built under my direction, heavily AI-assisted, demoable on request.</p></div>
+        </div>
+      </div>
+    </div>
+    <footer class="sfoot"><span class="mono dim">ABHISHEK S BIJU — WORK SUMMARY 2026</span><span class="mono fnum"></span></footer>
+  </section>
+
+  <!-- ============ 16 · SKILLS ============ -->
+  <section class="slide" id="s16">
+    <header class="shead"><span class="mono meta">16 / SKILLS</span><span class="mono dim">DEMONSTRATED, NOT LISTED</span></header>
+    <div class="sbody">
+      <div data-r><h2>Everything here shipped somewhere</h2></div>
+      <div class="sk-grid" style="margin-top:16px">
+        <div class="sk-col" data-r>
+          <h4>Test Automation</h4>
+          <ul>
+            <li><b>▸</b> Playwright · playwright-bdd <small>(Gherkin)</small></li>
+            <li><b>▸</b> Selector strategy <small>role / label / test-id</small></li>
+            <li><b>▸</b> Self-healing &amp; flake reduction</li>
+            <li><b>▸</b> Dual-engine coverage reconciliation</li>
+            <li><b>▸</b> False-green prevention</li>
+            <li><b>▸</b> Cucumber reporting · TestRail</li>
+          </ul>
+        </div>
+        <div class="sk-col" data-r>
+          <h4>Frontend Context</h4>
+          <ul>
+            <li><b>▸</b> React 18 · Redux</li>
+            <li><b>▸</b> JavaScript · TypeScript</li>
+            <li><b>▸</b> SCSS</li>
+            <li><b>▸</b> Split.io feature flags</li>
+            <li><b>▸</b> Keycloak auth · QAT envs</li>
+            <li><b>▸</b> Reading a large production UI codebase</li>
+          </ul>
+        </div>
+        <div class="sk-col" data-r>
+          <h4>Tooling &amp; Infra</h4>
+          <ul>
+            <li><b>▸</b> Node.js / ESM</li>
+            <li><b>▸</b> Git · GitHub PR workflow</li>
+            <li><b>▸</b> Jira / JQL · Confluence</li>
+            <li><b>▸</b> AI-agent pipelines · MCP</li>
+            <li><b>▸</b> CI (Jenkins) exposure</li>
+            <li><b>▸</b> Code coverage <small>V8 / Istanbul</small></li>
+          </ul>
+        </div>
+        <div class="sk-col" data-r>
+          <h4>Engineering Practice</h4>
+          <ul>
+            <li><b>▸</b> HLD / LLD design docs</li>
+            <li><b>▸</b> Empirical validation <small>verify-then-claim</small></li>
+            <li><b>▸</b> PR-review governance</li>
+            <li><b>▸</b> Working in a large shared suite</li>
+            <li><b>▸</b> Cost-aware system design</li>
+            <li><b>▸</b> Honest attribution &amp; calibration</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <footer class="sfoot"><span class="mono dim">ABHISHEK S BIJU — WORK SUMMARY 2026</span><span class="mono fnum"></span></footer>
+  </section>
+
+  <!-- ============ 17 · RESUME.SPEC ============ -->
+  <section class="slide" id="s17">
+    <header class="shead"><span class="mono meta">17 / PROOF</span><span class="mono dim">THE RÉSUMÉ, AS A PASSING SPEC</span></header>
+    <div class="sbody">
+      <div data-r><h2>resume.spec.ts</h2></div>
+      <div class="sp-grid" style="margin-top:16px">
+        <div class="code-cell" data-r>
+          <div class="fn">$ npx playwright test resume.spec.ts</div>
+          <div class="sp-line"><span class="tick">✓</span> expect(prs.merged).toBe(<span class="s">"20 / 20"</span>)</div>
+          <div class="sp-line"><span class="tick">✓</span> expect(journeys.migrated).toBe(<span class="k">23</span>) <span class="c">// +16 hardened</span></div>
+          <div class="sp-line"><span class="tick">✓</span> expect(hld.status).toBe(<span class="s">"Design Approved"</span>)</div>
+          <div class="sp-line"><span class="tick">✓</span> expect(turnaround).toDrop(<span class="s">"4h → 90min"</span>)</div>
+          <div class="sp-line"><span class="tick">✓</span> expect(falseGreens.shipped).toBe(<span class="k">0</span>)</div>
+          <div class="sp-line"><span class="tick">✓</span> expect(appDefect.handling).toBe(<span class="s">"filed, not masked"</span>)</div>
+          <div class="sp-line sum" id="spsum">6 passed (7.5 weeks)</div>
+        </div>
+        <div class="sp-side">
+          <div class="cn" data-r><h4>The one-line framing</h4><p>&ldquo;Designed and built a dual-engine validation lane that reconciles each migrated E2E test against its original recording through a decision oracle that hard-blocks false-positives.&rdquo;</p></div>
+          <div class="cn" data-r><h4>The ramp claim</h4><p>Onboarded a large unfamiliar stack, authored an approved HLD <em>and</em> shipped 23 journeys — in the window most engineers spend purely onboarding.</p></div>
+          <div class="cn" data-r><h4>Every number is defensible</h4><p>Git-verified, Jira-traceable, and framed exactly as strongly as the evidence allows — nothing here can be contradicted in an interview.</p></div>
+        </div>
+      </div>
+    </div>
+    <footer class="sfoot"><span class="mono dim">ABHISHEK S BIJU — WORK SUMMARY 2026</span><span class="mono fnum"></span></footer>
+  </section>
+
+  <!-- ============ 18 · CLOSE ============ -->
+  <section class="slide" id="s18">
+    <header class="shead"><span class="mono meta">18 / CONTACT</span><span class="mono dim">LET'S TALK</span></header>
+    <div class="sbody">
+      <div class="thx">
+        <h1 class="thx-t">
+          <span class="clip"><span>SHIP IT<span class="gd">.</span></span></span>
+          <span class="clip d2"><span><span class="fill">PROVE&nbsp;IT</span><span class="gd">.</span></span></span>
+        </h1>
+        <div class="thx-meta" data-r>
+          <div class="row"><span class="k">EMAIL</span><span class="v">abhishekbijuw2005@gmail.com</span></div>
+          <div class="row"><span class="k">PORTFOLIO</span><span class="v">abhishek-sbiju.github.io</span></div>
+          <div class="row"><span class="k">GITHUB</span><span class="v">github.com/abhishek-sbiju</span></div>
+          <div class="row"><span class="k">LINKEDIN</span><span class="v">linkedin.com/in/abhishek-smitha-biju-7a739b321</span></div>
+        </div>
+      </div>
+      <div class="road3" data-r>
+        <div class="xc"><span class="mono meta tag">FOURKITES</span><h4>Software Engineer Intern</h4><p>SDET / test automation — migration design, converter, 39 journeys delivered green.</p></div>
+        <div class="xc"><span class="mono meta tag">/E2E-VIRTUOSO</span><h4>The validation lane</h4><p>One command from journey to reviewed PR — with an oracle that hard-blocks false greens.</p></div>
+        <div class="xc"><span class="mono meta tag">BITS PILANI GOA</span><h4>B.E. Computer Science</h4><p>Third year — already shipping to a production test suite.</p></div>
+      </div>
+    </div>
+    <footer class="sfoot"><span class="mono dim">ABHISHEK S BIJU — WORK SUMMARY 2026</span><span class="mono fnum"></span></footer>
+  </section>
+
+</div>
+
+<script>
+(function(){
+  const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const stage = document.getElementById('stage');
+  const prog = document.getElementById('prog');
+  const cur = document.getElementById('cur');
+  const railnum = document.getElementById('railnum');
+  const slides = [...document.querySelectorAll('.slide')];
+  const N = slides.length;
+  document.getElementById('tot').textContent = String(N).padStart(2,'0');
+  slides.forEach((s,i)=>{ const f=s.querySelector('.fnum'); if(f) f.textContent = String(i+1).padStart(2,'0')+' / '+String(N).padStart(2,'0'); });
+
+  /* fit stage to viewport */
+  function fit(){
+    const s = Math.min(innerWidth/1300, innerHeight/740);
+    stage.style.transform = 'translate(-50%,-50%) scale('+s+')';
+  }
+  addEventListener('resize', fit); fit();
+
+  /* per-slide timers */
+  let timers = [];
+  function iv(fn,ms){ const t=setInterval(fn,ms); timers.push(t); return t; }
+  function tm(fn,ms){ const t=setTimeout(fn,ms); timers.push(t); return t; }
+  function killTimers(){ timers.forEach(t=>{clearInterval(t);clearTimeout(t);}); timers=[]; }
+
+  function countUp(el, target, dur, dec, suffix){
+    const t0 = performance.now();
+    function step(now){
+      const p = Math.min((now-t0)/dur, 1);
+      const e = 1-Math.pow(1-p,3);
+      el.textContent = (target*e).toFixed(dec) + (suffix||'');
+      if(p<1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  function typeSpec(id){
+    const lines = [...document.querySelectorAll('#'+id+' .sp-line')];
+    lines.forEach(l=>l.classList.remove('in'));
+    lines.forEach((l,i)=>tm(()=>l.classList.add('in'), 700+i*550));
+  }
+
+  /* slide-specific animations (1-indexed) */
+  const anims = {
+    1(){
+      const tick = document.getElementById('tick');
+      const feeds = [
+        'git · 89 commits · ≈+8.5K lines · develop',
+        'jira · HLD DYFN-12727 · Design Approved',
+        'qat · 23 journeys healed green · live env',
+        'lane · /e2e-virtuoso · 4h → 90min per journey',
+        'skill · /e2e-virtuoso <pr-url> <journey.json> · one command'
+      ];
+      let i=0;
+      iv(()=>{ i=(i+1)%feeds.length; tick.textContent = feeds[i]; }, 1700);
+    },
+    2(){
+      tm(()=>{
+        countUp(document.getElementById('g1'), 89, 1300, 0);
+        countUp(document.getElementById('g2'), 20, 1100, 0);
+        countUp(document.getElementById('g3'), 8.5, 1300, 1);
+        countUp(document.getElementById('g4'), 23, 1100, 0);
+        countUp(document.getElementById('g5'), 82, 1300, 0);
+      }, 600);
+    },
+    8(){
+      tm(()=>countUp(document.getElementById('ru13'), 13, 1400, 0), 900);
+    },
+    9(){
+      const js = [...document.querySelectorAll('#s9 .dl-j')];
+      const chip = document.getElementById('dlchip');
+      chip.textContent = 'HEALING ON QAT…'; chip.className = 'chip warn';
+      js.forEach(j=>{ j.classList.remove('on'); j.querySelector('i').textContent='…'; });
+      js.forEach((j,i)=>{
+        tm(()=>{
+          j.classList.add('on');
+          j.querySelector('i').textContent='GREEN ✓';
+          if(i===js.length-1){ chip.textContent='ALL GREEN ON QAT ✓'; chip.className='chip ok'; }
+        }, 500+i*170);
+      });
+    },
+    10(){
+      const box = document.getElementById('pritems');
+      const n = document.getElementById('prn');
+      const tick = document.getElementById('prtick');
+      const prs = [
+        ['#3358','Shipments pagination'],
+        ['#3366','Create-Inbound shipment'],
+        ['#3367','Filter shipments by details'],
+        ['#3370','Create-Outbound shipment'],
+        ['#3373','Select-Gate autopopulate'],
+        ['#3377','Quick filters'],
+        ['#3385','Freight loads — inbound'],
+        ['#3399','Update-Outbound'],
+        ['#3401','Update-Inbound'],
+        ['#3409','Check-in validate-prepop'],
+        ['#3425','Harden 16 ad-hoc suites'],
+        ['#3441','Check-in table-ops ×4 (+1,896)'],
+        ['#3453','.env.testing.local infra override']
+      ];
+      box.innerHTML=''; let i=0, c=0;
+      function add(){
+        const [id,name] = prs[i%prs.length];
+        const el = document.createElement('div');
+        el.className='pr-it';
+        el.innerHTML = '<span class="id">'+id+'</span><p>'+name+'</p><span class="chip ok">MERGED</span>';
+        box.prepend(el);
+        while(box.children.length>7) box.lastChild.remove();
+        tick.textContent = 'develop ← '+id;
+        c = Math.min(20, c+ (i<12 ? 2 : 1));
+        n.textContent = c;
+        i++;
+      }
+      add(); iv(add, 900);
+    },
+    12(){
+      const cells = ['oc1','oc3','oc4','oc2'].map(id=>document.getElementById(id));
+      const cls = ['lit-ok','lit','lit','lit-crit'];
+      let i=-1;
+      function cycle(){
+        cells.forEach(c=>c.classList.remove('lit','lit-ok','lit-crit'));
+        i=(i+1)%cells.length;
+        cells[i].classList.add(cls[i]);
+      }
+      tm(cycle, 700); iv(cycle, 2200);
+    },
+    15(){ typeSpec('s15'); },
+    17(){ typeSpec('s17'); }
+  };
+
+  /* reveal stagger */
+  function reveal(slide, on){
+    slide.querySelectorAll('[data-r]').forEach((el,i)=>{
+      if(on){
+        const d = el.dataset.d !== undefined ? +el.dataset.d : 90 + i*85;
+        el.style.transitionDelay = d+'ms';
+        requestAnimationFrame(()=>requestAnimationFrame(()=>el.classList.add('in')));
+      } else {
+        el.style.transitionDelay = '0ms';
+        el.classList.remove('in');
+      }
+    });
+  }
+
+  let idx = -1;
+  function go(n){
+    n = Math.max(0, Math.min(N-1, n));
+    if(n===idx) return;
+    killTimers();
+    if(idx>=0){ slides[idx].classList.remove('active'); reveal(slides[idx], false); }
+    idx = n;
+    const s = slides[idx];
+    s.classList.add('active');
+    reveal(s, true);
+    prog.style.width = ((idx+1)/N*100)+'%';
+    cur.textContent = String(idx+1).padStart(2,'0');
+    railnum.textContent = String(idx+1).padStart(2,'0');
+    history.replaceState(null,'','#'+(idx+1));
+    if(!RM && anims[idx+1]) anims[idx+1]();
+  }
+
+  /* nav */
+  addEventListener('keydown', e=>{
+    if(e.key==='ArrowRight'||e.key===' '||e.key==='PageDown') { e.preventDefault(); go(idx+1); }
+    else if(e.key==='ArrowLeft'||e.key==='PageUp') { e.preventDefault(); go(idx-1); }
+    else if(e.key==='Home') go(0);
+    else if(e.key==='End') go(N-1);
+    else if(e.key==='f'||e.key==='F'){
+      document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen();
+    }
+  });
+  stage.addEventListener('click', e=>{
+    if(e.target.closest('a')) return;
+    const r = stage.getBoundingClientRect();
+    const x = (e.clientX - r.left)/r.width;
+    if(x > 0.6) go(idx+1); else if(x < 0.25) go(idx-1);
+  });
+
+  const h = parseInt(location.hash.slice(1),10);
+  go(isNaN(h) ? 0 : h-1);
+})();
+</script>
+</body>
+</html>
