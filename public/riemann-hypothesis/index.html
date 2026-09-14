@@ -4,274 +4,315 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The Riemann Hypothesis</title>
-<meta name="description" content="The road to understanding the Riemann hypothesis, stage by stage: why each stage matters, when to move on, and the free PDFs for it.">
-<meta property="og:title" content="The Riemann Hypothesis">
-<meta property="og:description" content="Seven stages from writing proofs to ζ(s), with free PDFs.">
+<meta name="description" content="The road to understanding the Riemann hypothesis in seven stages: why each one matters, when to move on, and what to read.">
 <meta name="color-scheme" content="light">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23b8860b' d='M23.5 1.3 .5 8.45 12.81 10.26Z'/%3E%3Cpath fill='%23b8860b' fill-opacity='.55' d='M23.5 1.3 12.81 10.26 12.46 22.7Z'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,700;12..96,800&family=Spline+Sans+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,700&family=Spline+Sans+Mono:wght@400;500&display=swap">
 <style>
 :root{
-  --paper:#faf7f1;--panel:#fff;--ink:#1c1814;
-  --gold:#b8860b;--gold-deep:#8f690a;--muted:#776e5e;--line:#e4ddce;
-  --rail:64px;
-  --disp:'Bricolage Grotesque','Arial Narrow',system-ui,sans-serif;
-  --mono:'Spline Sans Mono','SF Mono',Consolas,monospace;
-  --wm:url("data:image/svg+xml,%3Csvg width='40' height='40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg transform='rotate(-45 20.0 20.0)'%3E%3Ctext x='20.0' y='22.0' font-family='sans-serif' font-size='7' font-weight='700' fill='%23755607' opacity='0.40' text-anchor='middle' letter-spacing='0.2'%3Einvariant%3C/text%3E%3C/g%3E%3C/svg%3E");
-  --wm-dim:url("data:image/svg+xml,%3Csvg width='40' height='40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg transform='rotate(-45 20.0 20.0)'%3E%3Ctext x='20.0' y='22.0' font-family='sans-serif' font-size='7' font-weight='700' fill='%23755607' opacity='0.14' text-anchor='middle' letter-spacing='0.2'%3Einvariant%3C/text%3E%3C/g%3E%3C/svg%3E");
-  --wm-bright:url("data:image/svg+xml,%3Csvg width='36' height='36' xmlns='http://www.w3.org/2000/svg'%3E%3Cg transform='rotate(-45 18.0 18.0)'%3E%3Ctext x='18.0' y='20.0' font-family='sans-serif' font-size='7' font-weight='700' fill='%238F690A' opacity='0.95' text-anchor='middle' letter-spacing='0.2'%3Einvariant%3C/text%3E%3C/g%3E%3C/svg%3E");
+  --paper:#faf7f1;--panel:#fff;--ink:#1c1814;--muted:#776e5e;--line:#e4ddce;
+  --gold:#b8860b;--gold-deep:#8f690a;--gold-wash:#f3ead6;
+  --disp:'Bricolage Grotesque',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --mono:'Spline Sans Mono',ui-monospace,Consolas,monospace;
+  --bar:56px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
-body{background:var(--paper);color:var(--ink);font-family:var(--disp);font-size:1.0313rem;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:clip}
+html,body{height:100%}
+body{background:var(--paper);color:var(--ink);font-family:var(--disp);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow:hidden}
 a{color:inherit}
-:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
-.mono{font-family:var(--mono);font-size:.6875rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:2px}
+.label{font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.math{font-family:var(--mono);font-size:.9em;white-space:nowrap}
 
-/* rail */
-.rail{position:fixed;top:0;left:0;bottom:0;width:var(--rail);z-index:20;display:flex;flex-direction:column;
-  background:linear-gradient(to bottom,color-mix(in srgb,var(--gold) 9%,var(--paper)),color-mix(in srgb,var(--gold) 26%,var(--paper)));
-  border-right:1px solid color-mix(in srgb,var(--gold) 30%,var(--line))}
-.rail-logo{display:flex;align-items:center;justify-content:center;height:64px;flex:none;border-bottom:1px solid color-mix(in srgb,var(--gold) 24%,var(--line))}
-.rail-logo svg{width:24px;height:24px;display:block}
-.wordmark{flex:1;display:flex;align-items:center;justify-content:center;writing-mode:vertical-rl;transform:rotate(180deg);
-  font-weight:800;font-size:1.05rem;letter-spacing:.32em;text-transform:uppercase;text-decoration:none;color:var(--ink)}
-.wordmark i{font-style:normal;color:var(--gold)}
-.rail nav{display:flex;flex-direction:column}
-.rail nav a{display:flex;align-items:center;justify-content:center;height:52px;text-decoration:none;
-  border-top:1px solid color-mix(in srgb,var(--gold) 24%,var(--line));
-  font-family:var(--mono);font-size:.72rem;font-weight:500;letter-spacing:.08em;color:var(--muted);transition:color .15s,background-color .15s}
-.rail nav a:hover{color:var(--ink);background-color:color-mix(in srgb,var(--gold) 36%,var(--paper))}
-main{margin-left:var(--rail)}
+/* slides */
+.slide{position:fixed;inset:0 0 var(--bar) 0;display:none;overflow-y:auto;padding:clamp(28px,6vh,72px) clamp(20px,6vw,88px)}
+.slide.on{display:flex}
+.inner{margin:auto;width:100%;max-width:1080px}
 
-/* exposed grid: 1px gaps over the line colour draw every edge */
-.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:1px;background:var(--line);border-bottom:1px solid var(--line)}
-.cell{background:var(--paper);padding:clamp(1.3rem,3vw,2.4rem);min-width:0}
-.cell.white{background:var(--panel)}
-.c-12{grid-column:span 12}.c-8{grid-column:span 8}.c-7{grid-column:span 7}.c-6{grid-column:span 6}
-.c-5{grid-column:span 5}.c-4{grid-column:span 4}.c-3{grid-column:span 3}
-.wm-cell{background-color:var(--paper);background-image:var(--wm);background-size:40px 40px;padding:0;min-height:48px}
-@keyframes wm-drift{from{background-position:0 0}to{background-position:40px 40px}}
+/* title slide */
+.cover h1{font-weight:700;font-size:clamp(44px,7vw,88px);line-height:1;letter-spacing:-.02em;margin-top:14px;text-wrap:balance}
+.cover .statement{margin-top:22px;font-size:clamp(19px,2.2vw,24px);max-width:30em}
+.cover .statement span{color:var(--muted)}
+.toc{list-style:none;margin-top:40px;display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));border-top:1px solid var(--line)}
+.toc button{width:100%;display:flex;gap:14px;align-items:baseline;padding:13px 4px;border-bottom:1px solid var(--line);text-align:left}
+.toc button:hover{background:var(--gold-wash)}
+.toc b{font-family:var(--mono);font-weight:500;font-size:13px;color:var(--gold-deep)}
+.hint{margin-top:26px}
 
-/* hero */
-.hero{display:flex;flex-direction:column;justify-content:center;min-height:clamp(380px,56vh,620px)}
-.kicker{color:var(--gold-deep);margin-bottom:1.3rem}
-h1{font-weight:800;font-size:clamp(2.7rem,6.6vw,6.4rem);line-height:.93;letter-spacing:-.015em;text-transform:uppercase}
-h1 .fill{background-image:var(--wm-bright),linear-gradient(rgba(143,105,10,.42),rgba(143,105,10,.42));background-size:36px 36px,auto;
-  -webkit-background-clip:text;background-clip:text;color:transparent}
-@keyframes wm-drift-36{from{background-position:0 0,0 0}to{background-position:36px 36px,0 0}}
-.statement{margin-top:1.8rem;max-width:34em;font-size:1.12rem;color:var(--muted)}
-.statement strong{color:var(--ink);font-weight:500}
-.strip-cell{position:relative;display:flex;flex-direction:column;justify-content:center;background-image:var(--wm-dim);background-size:40px 40px}
-.strip{width:100%;max-width:300px;height:auto;display:block;margin-inline:auto}
-.strip .band{fill:rgba(184,134,11,.10)}
-.strip .axis{stroke:var(--ink);stroke-width:1;fill:none}
-.strip .crit{stroke:var(--gold-deep);stroke-width:1.2;stroke-dasharray:3 3;fill:none}
-.strip .zero{fill:var(--gold)}
-.strip text{font-family:var(--mono);font-size:9.5px;fill:var(--muted);letter-spacing:.04em}
-.strip .lab{fill:var(--gold-deep);font-weight:600}
-.strip-cap{margin-top:1rem;color:var(--muted);text-align:center}
+/* stage slide */
+.stage .inner{display:grid;grid-template-columns:1.15fr 1fr;gap:64px;align-items:start}
+.stage h2{font-weight:700;font-size:clamp(34px,4.6vw,56px);line-height:1.05;letter-spacing:-.015em;margin-top:10px;text-wrap:balance}
+.stage h2 + .block{margin-top:30px}
+.block + .block{margin-top:22px}
+.block .label{display:block;margin-bottom:6px}
+.block p{max-width:36em}
+.go{background:var(--gold-wash);padding:16px 20px;border-radius:4px}
+.go .label{color:var(--gold-deep)}
+.read .label{display:block;margin-bottom:8px}
+.read ul{list-style:none;border-top:1px solid var(--line)}
+.read a{display:grid;grid-template-columns:54px 1fr;column-gap:12px;padding:13px 6px;border-bottom:1px solid var(--line);text-decoration:none}
+.read a:hover{background:var(--panel)}
+.read a:hover .t{text-decoration:underline;text-decoration-color:var(--gold);text-underline-offset:3px}
+.tag{grid-row:1 / span 2;align-self:start;justify-self:start;margin-top:4px;font-family:var(--mono);font-size:10.5px;font-weight:500;letter-spacing:.08em;padding:1px 6px;border:1px solid var(--line);border-radius:3px;color:var(--muted);background:var(--panel)}
+.tag.pdf{border-color:var(--ink);background:var(--ink);color:var(--paper)}
+.tag.buy{border-color:var(--gold);color:var(--gold-deep)}
+.t{font-weight:500;line-height:1.35}
+.a{font-size:14.5px;color:var(--muted)}
+.note{margin-top:12px;font-size:14.5px;color:var(--muted)}
 
-/* numbers row */
-.stat b{display:block;font-weight:800;font-size:clamp(1.8rem,3.4vw,2.6rem);line-height:1;letter-spacing:-.01em}
-.stat span{display:block;margin-top:.55rem;color:var(--muted)}
-.stat b sup{font-size:.5em;vertical-align:.8em}
-
-/* section head */
-h2{font-weight:800;text-transform:uppercase;font-size:clamp(1.7rem,3.6vw,2.8rem);line-height:1;letter-spacing:-.01em}
-.head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:1rem}
-.head .mono{color:var(--muted)}
-
-/* stages */
-.no{display:flex;flex-direction:column;gap:.9rem}
-.no b{font-weight:800;font-size:clamp(3.4rem,6vw,5.2rem);line-height:.85;letter-spacing:-.03em;
-  background-image:var(--wm-bright),linear-gradient(rgba(143,105,10,.42),rgba(143,105,10,.42));background-size:36px 36px,auto;
-  -webkit-background-clip:text;background-clip:text;color:transparent}
-.no h3{font-weight:800;text-transform:uppercase;font-size:clamp(1.15rem,1.9vw,1.45rem);line-height:1.08;letter-spacing:-.005em;text-wrap:balance}
-.no .mono{color:var(--muted)}
-.why{display:flex;flex-direction:column;gap:1.4rem}
-.why p{max-width:40em}
-.why .mono{display:block;margin-bottom:.4rem;color:var(--muted)}
-.why .go .mono{color:var(--gold-deep)}
-.why .go p{font-weight:500}
-.math{font-family:var(--mono);font-size:.92em;letter-spacing:0;white-space:nowrap}
-.links{padding:0;display:flex;flex-direction:column}
-.links a{display:grid;grid-template-columns:46px 1fr;column-gap:12px;padding:1rem clamp(1rem,2vw,1.5rem);text-decoration:none;border-bottom:1px solid var(--line);transition:background-color .15s}
-.links a:last-child{border-bottom:0}
-.links a:hover{background:color-mix(in srgb,var(--gold) 9%,var(--panel))}
-.tag{grid-row:1 / span 3;align-self:start;justify-self:start;margin-top:4px;font-family:var(--mono);font-size:.6rem;font-weight:600;letter-spacing:.12em;
-  padding:2px 6px;border:1px solid var(--ink);color:var(--ink)}
-.tag.pdf{background:var(--ink);color:var(--paper)}
-.t{grid-column:2;font-weight:700;line-height:1.3}
-.links a:hover .t{text-decoration:underline;text-decoration-color:var(--gold);text-underline-offset:3px}
-.a{grid-column:2;font-size:.9rem;color:var(--muted)}
-.u{grid-column:2;margin-top:3px;font-family:var(--mono);font-size:.68rem;color:color-mix(in srgb,var(--muted) 80%,var(--paper));overflow-wrap:anywhere}
-
-.foot{color:var(--muted);font-size:.92rem}
-.foot p+p{margin-top:.5rem}
+/* bottom bar */
+.bar{position:fixed;left:0;right:0;bottom:0;height:var(--bar);display:flex;align-items:center;gap:18px;padding-inline:clamp(16px,4vw,40px);border-top:1px solid var(--line);background:var(--paper)}
+.bar .name{font-weight:500;font-size:14px;white-space:nowrap}
+.bar .name a{text-decoration:none;color:var(--muted)}
+.segs{flex:1;display:flex;gap:6px;min-width:0}
+.segs button{flex:1;height:18px;display:flex;align-items:center}
+.segs button::before{content:"";display:block;width:100%;height:3px;border-radius:2px;background:var(--line)}
+.segs button.on::before{background:var(--gold)}
+.count{font-family:var(--mono);font-size:12.5px;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+.nav{display:flex;gap:6px}
+.nav button{width:38px;height:34px;border:1px solid var(--line);border-radius:4px;background:var(--panel);font-size:16px}
+.nav button:hover:not(:disabled){border-color:var(--ink)}
+.nav button:disabled{opacity:.35;cursor:default}
 
 @media (prefers-reduced-motion:no-preference){
-  .wm-cell{animation:wm-drift 10s linear infinite}
-  h1 .fill,.no b{animation:wm-drift-36 10s linear infinite}
-  .strip .zero{animation:rise .7s cubic-bezier(.22,.7,.2,1) both}
-  @keyframes rise{from{opacity:.25;transform:translateY(8px)}to{opacity:1;transform:none}}
-}
-@media (max-width:1020px){
-  .grid .s-no{grid-column:span 12}
-  .grid .s-why{grid-column:span 7}
-  .grid .s-links{grid-column:span 5}
-  .no{flex-direction:row;align-items:flex-end;gap:1.2rem}
+  .slide.on .inner{animation:in .28s ease-out both}
+  @keyframes in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
 }
 @media (max-width:760px){
-  :root{--rail:0px}
-  .rail{top:0;right:0;bottom:auto;width:auto;height:52px;flex-direction:row;border-right:0;border-bottom:1px solid color-mix(in srgb,var(--gold) 30%,var(--line));
-    background:color-mix(in srgb,var(--gold) 12%,var(--paper))}
-  .rail-logo{height:52px;width:52px;border-bottom:0;border-right:1px solid color-mix(in srgb,var(--gold) 24%,var(--line))}
-  .wordmark{writing-mode:horizontal-tb;transform:none;justify-content:flex-start;padding-left:14px;font-size:.9rem;letter-spacing:.24em}
-  .rail nav{display:none}
-  main{margin-top:52px}
-  .grid>.cell{grid-column:span 12}
-  .grid>.stat{grid-column:span 6}
-  .hero{min-height:0}
+  body{font-size:16px}
+  .stage .inner{grid-template-columns:1fr;gap:30px}
+  .slide.on{display:block}
+  .bar .name{display:none}
 }
 </style>
+<noscript><style>body{overflow:auto}.slide{display:block!important;position:static;min-height:auto;border-bottom:1px solid #e4ddce}.bar{display:none}</style></noscript>
 </head>
 <body>
 
-<aside class="rail">
-  <a class="rail-logo" href="/" aria-label="Back to abhishek-sbiju.github.io"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#b8860b" d="M23.5 1.3 .5 8.45 12.81 10.26Z"/><path fill="#b8860b" fill-opacity=".55" d="M23.5 1.3 12.81 10.26 12.46 22.7Z"/></svg></a>
-  <a class="wordmark" href="#top">Riemann<i>.</i></a>
-  <nav aria-label="Stages">
-    <a href="#s0">00</a><a href="#s1">01</a><a href="#s2">02</a><a href="#s3">03</a><a href="#s4">04</a><a href="#s5">05</a><a href="#s6">06</a>
-  </nav>
-</aside>
+<main>
 
-<main id="top">
-  <section class="grid">
-    <div class="cell hero c-8">
-      <p class="mono kicker">The goal &middot; open since 1859</p>
-      <h1>The Riemann<br><span class="fill">Hypothesis.</span></h1>
-      <p class="statement">Every nontrivial zero of <span class="math">ζ(s)</span> has real part <strong>½</strong>. Nobody has proved it. This is the road to understanding it: seven stages, why each one matters, when to move on, and the free PDFs for each.</p>
-    </div>
-    <figure class="cell strip-cell c-4">
-      <svg class="strip" viewBox="0 0 240 322" role="img" aria-label="The critical strip, with the first ten zeros of the zeta function on the line where the real part is one half">
-        <rect class="band" x="70" y="20" width="120" height="280"/>
-        <line class="axis" x1="20" y1="300" x2="232" y2="300"/>
-        <line class="axis" x1="70" y1="306" x2="70" y2="14"/>
-        <line class="crit" x1="130" y1="22" x2="130" y2="300"/>
-        <text x="130" y="12" text-anchor="middle" class="lab">Re(s) = ½</text>
-        <text x="70" y="316" text-anchor="middle">0</text>
-        <text x="130" y="316" text-anchor="middle">½</text>
-        <text x="190" y="316" text-anchor="middle">1</text>
-        <circle class="zero" cx="130" cy="223.9" r="3.8" style="animation-delay:.05s"/>
-        <circle class="zero" cx="130" cy="186.8" r="3.8" style="animation-delay:.1s"/>
-        <circle class="zero" cx="130" cy="165.3" r="3.8" style="animation-delay:.15s"/>
-        <circle class="zero" cx="130" cy="136.2" r="3.8" style="animation-delay:.2s"/>
-        <circle class="zero" cx="130" cy="122.7" r="3.8" style="animation-delay:.25s"/>
-        <circle class="zero" cx="130" cy="97.6" r="3.8" style="animation-delay:.3s"/>
-        <circle class="zero" cx="130" cy="79.7" r="3.8" style="animation-delay:.35s"/>
-        <circle class="zero" cx="130" cy="66.7" r="3.8" style="animation-delay:.4s"/>
-        <circle class="zero" cx="130" cy="41.5" r="3.8" style="animation-delay:.45s"/>
-        <circle class="zero" cx="130" cy="32" r="3.8" style="animation-delay:.5s"/>
-        <text x="140" y="227">14.13</text>
-        <text x="140" y="35">49.77</text>
-      </svg>
-      <figcaption class="mono strip-cap">First ten zeros &middot; all on the line</figcaption>
-    </figure>
+<section class="slide cover on" aria-label="Title">
+  <div class="inner">
+    <p class="label">A road in seven stages</p>
+    <h1>The Riemann Hypothesis</h1>
+    <p class="statement">Every nontrivial zero of <span class="math">ζ(s)</span> has real part ½. <span>Open since 1859.</span></p>
+    <ol class="toc">
+      <li><button data-go="1"><b>00</b>Proofs</button></li>
+      <li><button data-go="2"><b>01</b>Elementary number theory</button></li>
+      <li><button data-go="3"><b>02</b>Real analysis</button></li>
+      <li><button data-go="4"><b>03</b>Complex analysis</button></li>
+      <li><button data-go="5"><b>04</b>Analytic number theory</button></li>
+      <li><button data-go="6"><b>05</b>The zeta function</button></li>
+      <li><button data-go="7"><b>06</b>The frontier</button></li>
+    </ol>
+    <p class="label hint">Press → or swipe to start</p>
+  </div>
+</section>
 
-    <div class="cell stat c-3"><b>1859</b><span class="mono">Riemann states it</span></div>
-    <div class="cell stat c-3"><b>10<sup>13</sup>+</b><span class="mono">zeros checked, all on the line</span></div>
-    <div class="cell stat c-3"><b>$1M</b><span class="mono">Clay Millennium Prize</span></div>
-    <div class="cell stat c-3"><b>7</b><span class="mono">stages on this road</span></div>
-    <div class="cell wm-cell c-12" aria-hidden="true"></div>
-  </section>
+<section class="slide stage" aria-label="Stage 00, Proofs">
+  <div class="inner">
+    <div>
+      <p class="label">Stage 00</p>
+      <h2>Proofs</h2>
+      <div class="block"><span class="label">Why</span><p>Every book after this one is written in proofs. Until you can read and write one, you're only looking at the pages. Coming from code, this is the real gate: a compiler checks your code, but only you can check a proof.</p></div>
+      <div class="block go"><span class="label">Move on when</span><p>You can prove √2 is irrational and that there are infinitely many primes with the book closed, and point to the exact line where a wrong proof breaks.</p></div>
+    </div>
+    <div class="read">
+      <span class="label">Read</span>
+      <ul>
+        <li><a href="https://www.cambridge.org/highereducation/books/how-to-prove-it/6D2965D625C6836CD4A785A2C843B3DA" target="_blank" rel="noopener"><span class="tag buy">BUY</span><span class="t">How to Prove It: A Structured Approach</span><span class="a">Daniel J. Velleman · start here</span></a></li>
+        <li><a href="https://djvelleman.github.io/HTPIwL/" target="_blank" rel="noopener"><span class="tag">FREE</span><span class="t">How To Prove It with Lean</span><span class="a">Daniel J. Velleman · the same ideas, checked by a computer</span></a></li>
+        <li><a href="https://richardhammack.github.io/BookOfProof/Main.pdf" target="_blank" rel="noopener"><span class="tag pdf">PDF</span><span class="t">Book of Proof</span><span class="a">Richard Hammack · free, gentler, more exercises</span></a></li>
+      </ul>
+      <p class="note">Read Velleman. Use Hammack when you want more practice.</p>
+    </div>
+  </div>
+</section>
 
-  <section class="grid">
-    <div class="cell head c-12"><h2>The road</h2><span class="mono">00 → 06 &middot; in order &middot; don't skip</span></div>
+<section class="slide stage" aria-label="Stage 01, Elementary number theory">
+  <div class="inner">
+    <div>
+      <p class="label">Stage 01</p>
+      <h2>Elementary number theory</h2>
+      <div class="block"><span class="label">Why</span><p>The primes live here before any analysis touches them. Congruences, unique factorisation, and functions like φ and μ all come back later, inside <span class="math">ζ(s)</span>.</p></div>
+      <div class="block go"><span class="label">Move on when</span><p>You can prove Fermat's little theorem and the Chinese remainder theorem, use Möbius inversion, and show why every prime of the form 4k + 1 is a sum of two squares.</p></div>
+    </div>
+    <div class="read">
+      <span class="label">Read</span>
+      <ul>
+        <li><a href="https://wstein.org/ent/ent.pdf" target="_blank" rel="noopener"><span class="tag pdf">PDF</span><span class="t">Elementary Number Theory: Primes, Congruences, and Secrets</span><span class="a">William Stein</span></a></li>
+        <li><a href="https://shoup.net/ntb/ntb-v2.pdf" target="_blank" rel="noopener"><span class="tag pdf">PDF</span><span class="t">A Computational Introduction to Number Theory and Algebra</span><span class="a">Victor Shoup</span></a></li>
+        <li><a href="https://s3.amazonaws.com/aops-cdn.artofproblemsolving.com/resources/articles/olympiad-number-theory.pdf" target="_blank" rel="noopener"><span class="tag pdf">PDF</span><span class="t">Olympiad Number Theory Through Challenging Problems</span><span class="a">Justin Stevens</span></a></li>
+      </ul>
+    </div>
+  </div>
+</section>
 
-    <div class="cell no s-no c-3" id="s0"><b>00</b><h3>Proofs</h3></div>
-    <div class="cell why s-why c-5">
-      <div><span class="mono">Why</span><p>Every book after this one is written in proofs. Until you can read and write one, you are only looking at the pages. Coming from code, this is the real gate: a compiler checks your code, but only you can check a proof.</p></div>
-      <div class="go"><span class="mono">Move on when</span><p>You can prove √2 is irrational and that there are infinitely many primes with the book closed, and point to the exact line where a wrong proof breaks.</p></div>
+<section class="slide stage" aria-label="Stage 02, Real analysis">
+  <div class="inner">
+    <div>
+      <p class="label">Stage 02</p>
+      <h2>Real analysis</h2>
+      <div class="block"><span class="label">Why</span><p><span class="math">ζ(s)</span> is defined as an infinite sum, 1 + 1/2<sup>s</sup> + 1/3<sup>s</sup> + ⋯. Limits, series and uniform convergence are what make a sum like that mean anything. Skip this, and every later proof turns into something you just have to trust.</p></div>
+      <div class="block go"><span class="label">Move on when</span><p>You can prove that ∑ 1/n² converges while ∑ 1/n does not, and explain why a uniform limit of continuous functions is continuous.</p></div>
     </div>
-    <div class="cell white links s-links c-4">
-      <a href="https://richardhammack.github.io/BookOfProof/Main.pdf" target="_blank" rel="noopener"><span class="tag pdf">PDF</span><span class="t">Book of Proof</span><span class="a">Richard Hammack</span><span class="u">richardhammack.github.io/BookOfProof/Main.pdf</span></a>
+    <div class="read">
+      <span class="label">Read</span>
+      <ul>
+        <li><a href="https://www.jirka.org/ra/realanal.pdf" target="_blank" rel="noopener"><span class="tag pdf">PDF</span><span class="t">Basic Analysis I: Introduction to Real Analysis</span><span class="a">Jiří Lebl</span></a></li>
+        <li><a href="https://www.jirka.org/ra/realanal2.pdf" target="_blank" rel="noopener"><span class="tag pdf">PDF</span><span class="t">Basic Analysis II</span><span class="a">Jiří Lebl</span></a></li>
+      </ul>
     </div>
+  </div>
+</section>
+<section class="slide stage" aria-label="Stage 03, Complex analysis">
+  <div class="inner">
+    <div>
+      <p class="label">Stage 03</p>
+      <h2>Complex analysis</h2>
+      <div class="block"><span class="label">Why</span><p>The sum for <span class="math">ζ(s)</span> only works when Re(s) &gt; 1, and every zero the hypothesis is about lies where that sum blows up. Analytic continuation is the only way to get there. Contour integrals are also how the primes finally get counted.</p></div>
+      <div class="block go"><span class="label">Move on when</span><p>You can state Cauchy's theorem, evaluate an integral with residues, and explain analytic continuation to a friend without writing a single symbol.</p></div>
+    </div>
+    <div class="read">
+      <span class="label">Read</span>
+      <ul>
+        <li><a href="https://matthbeck.github.io/papers/complex.pdf" target="_blank" rel="noopener"><span class="tag pdf">PDF</span><span class="t">A First Course in Complex Analysis</span><span class="a">Beck, Marchesi, Pixton &amp; Sabalka</span></a></li>
+        <li><a href="https://www.youtube.com/watch?v=sD0NjbwqlYw" target="_blank" rel="noopener"><span class="tag">VIDEO</span><span class="t">Visualizing the Riemann zeta function and analytic continuation</span><span class="a">3Blue1Brown</span></a></li>
+      </ul>
+    </div>
+  </div>
+</section>
 
-    <div class="cell no s-no c-3" id="s1"><b>01</b><h3>Elementary number theory</h3></div>
-    <div class="cell why s-why c-5">
-      <div><span class="mono">Why</span><p>The primes live here before any analysis touches them. Congruences, unique factorisation, and functions like φ and μ all come back later, inside <span class="math">ζ(s)</span>.</p></div>
-      <div class="go"><span class="mono">Move on when</span><p>You can prove Fermat's little theorem and the Chinese remainder theorem, use Möbius inversion, and show why every prime of the form 4k + 1 is a sum of two squares.</p></div>
+<section class="slide stage" aria-label="Stage 04, Analytic number theory">
+  <div class="inner">
+    <div>
+      <p class="label">Stage 04</p>
+      <h2>Analytic number theory</h2>
+      <div class="block"><span class="label">Why</span><p>This is where analysis starts counting primes: Chebyshev's bounds, Dirichlet's theorem, and then the prime number theorem, <span class="math">π(x) ~ x / log x</span>. That's the exact result the Riemann hypothesis would sharpen.</p></div>
+      <div class="block go"><span class="label">Move on when</span><p>You can prove the prime number theorem start to finish (Newman's four-page route counts), and explain why π(10<sup>6</sup>) = 78,498 sits closer to li(10<sup>6</sup>) ≈ 78,628 than to 10<sup>6</sup>/log 10<sup>6</sup> ≈ 72,382.</p></div>
     </div>
-    <div class="cell white links s-links c-4">
-      <a href="https://wstein.org/ent/ent.pdf" target="_blank" rel="noopener"><span class="tag pdf">PDF</span><span class="t">Elementary Number Theory: Primes, Congruences, and Secrets</span><span class="a">William Stein</span><span class="u">wstein.org/ent/ent.pdf</span></a>
-      <a href="https://shoup.net/ntb/ntb-v2.pdf" target="_blank" rel="noopener"><span class="tag pdf">PDF</span><span class="t">A Computational Introduction to Number Theory and Algebra</span><span class="a">Victor Shoup</span><span class="u">shoup.net/ntb/ntb-v2.pdf</span></a>
-      <a href="https://s3.amazonaws.com/aops-cdn.artofproblemsolving.com/resources/articles/olympiad-number-theory.pdf" target="_blank" rel="noopener"><span class="tag pdf">PDF</span><span class="t">Olympiad Number Theory Through Challenging Problems</span><span class="a">Justin Stevens</span><span class="u">s3.amazonaws.com/aops-cdn.artofproblemsolving.com/resources/articles/olympiad-number-theory.pdf</span></a>
+    <div class="read">
+      <span class="label">Read</span>
+      <ul>
+        <li><a href="https://terrytao.wordpress.com/2014/11/23/254a-notes-1-elementary-multiplicative-number-theory/" target="_blank" rel="noopener"><span class="tag">NOTES</span><span class="t">254A, Notes 1: Elementary multiplicative number theory</span><span class="a">Terence Tao</span></a></li>
+        <li><a href="https://terrytao.wordpress.com/2014/12/09/254a-notes-2-complex-analytic-multiplicative-number-theory/" target="_blank" rel="noopener"><span class="tag">NOTES</span><span class="t">254A, Notes 2: Complex-analytic multiplicative number theory</span><span class="a">Terence Tao</span></a></li>
+        <li><a href="https://people.mpim-bonn.mpg.de/zagier/files/doi/10.2307/2975232/fulltext.pdf" target="_blank" rel="noopener"><span class="tag pdf">PDF</span><span class="t">Newman's Short Proof of the Prime Number Theorem</span><span class="a">Don Zagier</span></a></li>
+      </ul>
     </div>
+  </div>
+</section>
 
-    <div class="cell no s-no c-3" id="s2"><b>02</b><h3>Real analysis</h3></div>
-    <div class="cell why s-why c-5">
-      <div><span class="mono">Why</span><p><span class="math">ζ(s)</span> is defined as an infinite sum, 1 + 1/2<sup>s</sup> + 1/3<sup>s</sup> + ⋯. Limits, series and uniform convergence are what make a sum like that mean anything. Skip this, and every later proof turns into something you just have to trust.</p></div>
-      <div class="go"><span class="mono">Move on when</span><p>You can prove that ∑ 1/n² converges while ∑ 1/n does not, and explain why a uniform limit of continuous functions is continuous.</p></div>
+<section class="slide stage" aria-label="Stage 05, The zeta function">
+  <div class="inner">
+    <div>
+      <p class="label">Stage 05</p>
+      <h2>The zeta function</h2>
+      <div class="block"><span class="label">Why</span><p>Now the real object: Riemann's own paper, the functional equation, the explicit formula that writes the primes as a sum over the zeros, and the zero-free regions. This is where you finally see what the hypothesis says, and why so much of mathematics depends on it.</p></div>
+      <div class="block go"><span class="label">Move on when</span><p>You can derive the functional equation, explain why RH is the same statement as <span class="math">π(x) = li(x) + O(√x log x)</span>, and follow Hardy's 1914 proof that infinitely many zeros lie on the line.</p></div>
     </div>
-    <div class="cell white links s-links c-4">
-      <a href="https://www.jirka.org/ra/realanal.pdf" target="_blank" rel="noopener"><span class="tag pdf">PDF</span><span class="t">Basic Analysis I: Introduction to Real Analysis</span><span class="a">Jiří Lebl</span><span class="u">jirka.org/ra/realanal.pdf</span></a>
-      <a href="https://www.jirka.org/ra/realanal2.pdf" target="_blank" rel="noopener"><span class="tag pdf">PDF</span><span class="t">Basic Analysis II</span><span class="a">Jiří Lebl</span><span class="u">jirka.org/ra/realanal2.pdf</span></a>
+    <div class="read">
+      <span class="label">Read</span>
+      <ul>
+        <li><a href="https://www.claymath.org/wp-content/uploads/2023/04/Wilkins-translation.pdf" target="_blank" rel="noopener"><span class="tag pdf">PDF</span><span class="t">On the Number of Prime Numbers less than a Given Quantity (1859)</span><span class="a">Bernhard Riemann, translated by David R. Wilkins</span></a></li>
+        <li><a href="https://www.claymath.org/wp-content/uploads/2022/05/riemann.pdf" target="_blank" rel="noopener"><span class="tag pdf">PDF</span><span class="t">Problems of the Millennium: the Riemann Hypothesis</span><span class="a">Enrico Bombieri</span></a></li>
+        <li><a href="https://www-users.cse.umn.edu/~odlyzko/zeta_tables/index.html" target="_blank" rel="noopener"><span class="tag">DATA</span><span class="t">Tables of zeros of the Riemann zeta function</span><span class="a">Andrew Odlyzko</span></a></li>
+      </ul>
     </div>
-    <div class="cell no s-no c-3" id="s3"><b>03</b><h3>Complex analysis</h3></div>
-    <div class="cell why s-why c-5">
-      <div><span class="mono">Why</span><p>The sum for <span class="math">ζ(s)</span> only works when Re(s) &gt; 1, and every zero the hypothesis is about lies where that sum blows up. Analytic continuation is the only way to get there. Contour integrals are also how the primes finally get counted.</p></div>
-      <div class="go"><span class="mono">Move on when</span><p>You can state Cauchy's theorem, evaluate an integral with residues, and explain analytic continuation to a friend without writing a single symbol.</p></div>
-    </div>
-    <div class="cell white links s-links c-4">
-      <a href="https://matthbeck.github.io/papers/complex.pdf" target="_blank" rel="noopener"><span class="tag pdf">PDF</span><span class="t">A First Course in Complex Analysis</span><span class="a">Beck, Marchesi, Pixton &amp; Sabalka</span><span class="u">matthbeck.github.io/papers/complex.pdf</span></a>
-      <a href="https://www.youtube.com/watch?v=sD0NjbwqlYw" target="_blank" rel="noopener"><span class="tag">VIDEO</span><span class="t">Visualizing the Riemann zeta function and analytic continuation</span><span class="a">3Blue1Brown</span><span class="u">youtube.com/watch?v=sD0NjbwqlYw</span></a>
-    </div>
+  </div>
+</section>
 
-    <div class="cell no s-no c-3" id="s4"><b>04</b><h3>Analytic number theory</h3></div>
-    <div class="cell why s-why c-5">
-      <div><span class="mono">Why</span><p>This is where analysis starts counting primes: Chebyshev's bounds, Dirichlet's theorem, and then the prime number theorem, <span class="math">π(x) ~ x / log x</span>. That is the exact result the Riemann hypothesis would sharpen.</p></div>
-      <div class="go"><span class="mono">Move on when</span><p>You can prove the prime number theorem start to finish (Newman's four-page route counts), and explain why π(10<sup>6</sup>) = 78,498 sits closer to li(10<sup>6</sup>) ≈ 78,628 than to 10<sup>6</sup>/log 10<sup>6</sup> ≈ 72,382.</p></div>
+<section class="slide stage" aria-label="Stage 06, The frontier">
+  <div class="inner">
+    <div>
+      <p class="label">Stage 06</p>
+      <h2>The frontier</h2>
+      <div class="block"><span class="label">Why</span><p>Read what people are working on now, and try small problems of your own. The goal isn't to prove RH. It's to be able to follow the people who are trying. Linear algebra comes back here, because the zeros are spaced like the eigenvalues of large random matrices.</p></div>
+      <div class="block go"><span class="label">Move on when</span><p>You don't. This is the stage you keep for life.</p></div>
     </div>
-    <div class="cell white links s-links c-4">
-      <a href="https://terrytao.wordpress.com/2014/11/23/254a-notes-1-elementary-multiplicative-number-theory/" target="_blank" rel="noopener"><span class="tag">NOTES</span><span class="t">254A, Notes 1: Elementary multiplicative number theory</span><span class="a">Terence Tao</span><span class="u">terrytao.wordpress.com/2014/11/23/254a-notes-1-elementary-multiplicative-number-theory</span></a>
-      <a href="https://terrytao.wordpress.com/2014/12/09/254a-notes-2-complex-analytic-multiplicative-number-theory/" target="_blank" rel="noopener"><span class="tag">NOTES</span><span class="t">254A, Notes 2: Complex-analytic multiplicative number theory</span><span class="a">Terence Tao</span><span class="u">terrytao.wordpress.com/2014/12/09/254a-notes-2-complex-analytic-multiplicative-number-theory</span></a>
-      <a href="https://people.mpim-bonn.mpg.de/zagier/files/doi/10.2307/2975232/fulltext.pdf" target="_blank" rel="noopener"><span class="tag pdf">PDF</span><span class="t">Newman's Short Proof of the Prime Number Theorem</span><span class="a">Don Zagier</span><span class="u">people.mpim-bonn.mpg.de/zagier/files/doi/10.2307/2975232/fulltext.pdf</span></a>
+    <div class="read">
+      <span class="label">Read</span>
+      <ul>
+        <li><a href="https://linear.axler.net/LADR4e.pdf" target="_blank" rel="noopener"><span class="tag pdf">PDF</span><span class="t">Linear Algebra Done Right, 4th ed.</span><span class="a">Sheldon Axler</span></a></li>
+        <li><a href="https://venhance.github.io/napkin/Napkin.pdf" target="_blank" rel="noopener"><span class="tag pdf">PDF</span><span class="t">An Infinitely Large Napkin</span><span class="a">Evan Chen</span></a></li>
+        <li><a href="https://www.erdosproblems.com/" target="_blank" rel="noopener"><span class="tag">SITE</span><span class="t">Erdős Problems</span><span class="a">Open problems, some small enough for one person</span></a></li>
+      </ul>
     </div>
+  </div>
+</section>
 
-    <div class="cell no s-no c-3" id="s5"><b>05</b><h3>The zeta function</h3></div>
-    <div class="cell why s-why c-5">
-      <div><span class="mono">Why</span><p>Now the real object. Riemann's own paper, the functional equation, the explicit formula that writes the primes as a sum over the zeros, and the zero-free regions. This is where you finally see what the hypothesis says, and why so much of mathematics depends on it.</p></div>
-      <div class="go"><span class="mono">Move on when</span><p>You can derive the functional equation, explain why RH is the same statement as <span class="math">π(x) = li(x) + O(√x log x)</span>, and follow Hardy's 1914 proof that infinitely many zeros lie on the line.</p></div>
-    </div>
-    <div class="cell white links s-links c-4">
-      <a href="https://www.claymath.org/wp-content/uploads/2023/04/Wilkins-translation.pdf" target="_blank" rel="noopener"><span class="tag pdf">PDF</span><span class="t">On the Number of Prime Numbers less than a Given Quantity (1859)</span><span class="a">Bernhard Riemann, translated by David R. Wilkins</span><span class="u">claymath.org/wp-content/uploads/2023/04/Wilkins-translation.pdf</span></a>
-      <a href="https://www.claymath.org/wp-content/uploads/2022/05/riemann.pdf" target="_blank" rel="noopener"><span class="tag pdf">PDF</span><span class="t">Problems of the Millennium: the Riemann Hypothesis</span><span class="a">Enrico Bombieri</span><span class="u">claymath.org/wp-content/uploads/2022/05/riemann.pdf</span></a>
-      <a href="https://www-users.cse.umn.edu/~odlyzko/zeta_tables/index.html" target="_blank" rel="noopener"><span class="tag">DATA</span><span class="t">Tables of zeros of the Riemann zeta function</span><span class="a">Andrew Odlyzko</span><span class="u">www-users.cse.umn.edu/~odlyzko/zeta_tables</span></a>
-    </div>
-
-    <div class="cell no s-no c-3" id="s6"><b>06</b><h3>The frontier</h3></div>
-    <div class="cell why s-why c-5">
-      <div><span class="mono">Why</span><p>Read what people are working on now, and try small problems of your own. The goal isn't to prove RH. It's to be able to follow the people who are trying. Linear algebra comes back here, because the zeros are spaced like the eigenvalues of large random matrices.</p></div>
-      <div class="go"><span class="mono">Move on when</span><p>You don't. This is the stage you keep for life.</p></div>
-    </div>
-    <div class="cell white links s-links c-4">
-      <a href="https://linear.axler.net/LADR4e.pdf" target="_blank" rel="noopener"><span class="tag pdf">PDF</span><span class="t">Linear Algebra Done Right, 4th ed.</span><span class="a">Sheldon Axler</span><span class="u">linear.axler.net/LADR4e.pdf</span></a>
-      <a href="https://venhance.github.io/napkin/Napkin.pdf" target="_blank" rel="noopener"><span class="tag pdf">PDF</span><span class="t">An Infinitely Large Napkin</span><span class="a">Evan Chen</span><span class="u">venhance.github.io/napkin/Napkin.pdf</span></a>
-      <a href="https://www.erdosproblems.com/" target="_blank" rel="noopener"><span class="tag">SITE</span><span class="t">Erdős Problems</span><span class="a">Open problems, some small enough for one person</span><span class="u">erdosproblems.com</span></a>
-    </div>
-  </section>
-
-  <section class="grid">
-    <div class="cell foot c-8">
-      <p>Every link opens the copy its author, their university or arXiv publishes. Nothing is re-hosted here.</p>
-      <p>The classic paid books (Apostol, Edwards, Davenport, Titchmarsh) are worth owning later, and they aren't linked.</p>
-    </div>
-    <div class="cell c-4"><p class="mono" style="color:var(--muted)">12 PDFs &middot; 5 notes, videos and tools<br>Links checked 14 Sep 2026</p></div>
-    <div class="cell wm-cell c-12" aria-hidden="true"></div>
-  </section>
 </main>
+
+<nav class="bar" aria-label="Slides">
+  <span class="name"><a href="/">abhishek-sbiju.github.io</a></span>
+  <div class="segs" id="segs"></div>
+  <span class="count" id="count">1 / 8</span>
+  <div class="nav">
+    <button id="prev" aria-label="Previous slide">←</button>
+    <button id="next" aria-label="Next slide">→</button>
+  </div>
+</nav>
+
+<script>
+(function(){
+  var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  var segs = document.getElementById('segs');
+  var count = document.getElementById('count');
+  var prev = document.getElementById('prev');
+  var next = document.getElementById('next');
+  var i = 0;
+
+  slides.forEach(function(s, k){
+    var b = document.createElement('button');
+    b.setAttribute('aria-label', 'Go to slide ' + (k + 1));
+    b.addEventListener('click', function(){ go(k); });
+    segs.appendChild(b);
+  });
+  var bars = Array.prototype.slice.call(segs.children);
+
+  function go(n){
+    n = Math.max(0, Math.min(slides.length - 1, n));
+    slides[i].classList.remove('on');
+    i = n;
+    slides[i].classList.add('on');
+    slides[i].scrollTop = 0;
+    count.textContent = (i + 1) + ' / ' + slides.length;
+    bars.forEach(function(b, k){ b.classList.toggle('on', k <= i); });
+    prev.disabled = i === 0;
+    next.disabled = i === slides.length - 1;
+    try { history.replaceState(null, '', i ? '#' + i : location.pathname); } catch (e) {}
+  }
+
+  prev.addEventListener('click', function(){ go(i - 1); });
+  next.addEventListener('click', function(){ go(i + 1); });
+  document.querySelectorAll('[data-go]').forEach(function(b){
+    b.addEventListener('click', function(){ go(+b.getAttribute('data-go')); });
+  });
+
+  document.addEventListener('keydown', function(e){
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
+    var k = e.key;
+    if (k === ' ' && e.target.closest && e.target.closest('a,button')) return;
+    if (k === 'ArrowRight' || k === 'PageDown' || (k === ' ' && !e.shiftKey)) { e.preventDefault(); go(i + 1); }
+    else if (k === 'ArrowLeft' || k === 'PageUp' || (k === ' ' && e.shiftKey)) { e.preventDefault(); go(i - 1); }
+    else if (k === 'Home') { e.preventDefault(); go(0); }
+    else if (k === 'End') { e.preventDefault(); go(slides.length - 1); }
+  });
+
+  var x0 = null, y0 = null;
+  document.addEventListener('touchstart', function(e){ x0 = e.touches[0].clientX; y0 = e.touches[0].clientY; }, { passive: true });
+  document.addEventListener('touchend', function(e){
+    if (x0 === null) return;
+    var dx = e.changedTouches[0].clientX - x0, dy = e.changedTouches[0].clientY - y0;
+    if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy) * 1.5) go(i + (dx < 0 ? 1 : -1));
+    x0 = y0 = null;
+  }, { passive: true });
+
+  var start = parseInt((location.hash || '').slice(1), 10);
+  go(isNaN(start) ? 0 : start);
+})();
+</script>
 </body>
 </html>
