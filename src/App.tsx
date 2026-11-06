@@ -1,3 +1,4 @@
+import ProjectDirectory from './components/ProjectDirectory'
 import Nav from './components/Nav'
 import Hero from './components/hero/Hero'
 import About from './components/About'
@@ -28,6 +29,7 @@ export default function App() {
           <Experience />
           <Projects />
           <PrivateProjects />
+          <ProjectDirectory />
           <GithubSection />
           <Education />
           <Contact />
